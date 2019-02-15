@@ -26,6 +26,7 @@ if (isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION['or
                       <li class="divider"></li>
                       <li><a href="admin_association.php">Choisir l\'association</a></li>
                       <li class="divider"></li>
+                      <li><a href="gestion_parcours.php">Gestion Parcours</a></li>
                       <li><a href="form_insert_parcours.php">Créer Parcours</a></li>
                       <li><a href="form_update_parcours_choix.php">Modifier Parcours</a></li>
                       <li class="divider"></li>
