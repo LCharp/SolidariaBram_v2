@@ -23,7 +23,8 @@
 <body>
     <!-- Appel Navbar -->
     <?php
-        include('include/nav.inc');
+        //include('include/nav.inc');
+		include('nav.php');
     ?>
 
 </body>

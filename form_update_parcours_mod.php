@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="css/navbar.css">
 <body>
     <?php
-        include('include/nav.inc');
+    //include('include/nav.inc');
+    include('nav.php');
         $selectid = $_POST['inputId'];
     ?>
 

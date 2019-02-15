@@ -65,7 +65,8 @@ hr{
 <body>
     <?php
         session_start();
-        include('include/nav.inc');
+        //include('include/nav.inc');
+        include('nav.php');
     ?>
     <br>
     <div class="container-fluid">

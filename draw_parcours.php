@@ -20,7 +20,10 @@ session_start();
 </head>
 
 <body>
-    <?php include('include/nav.inc'); ?>
+    <?php
+    //include('include/nav.inc');
+    include('nav.php');
+    ?>
     <h3> Dessiner votre parcours</h5>
             <div id="map"></div>
             <script>

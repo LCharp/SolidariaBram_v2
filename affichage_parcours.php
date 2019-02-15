@@ -66,7 +66,10 @@
   </style>
 </head>
 <body>
-  <?php include('include/nav.inc'); ?>
+  <?php
+      //include('include/nav.inc');
+      include('nav.php');
+   ?>
 
 
 <div class="container">

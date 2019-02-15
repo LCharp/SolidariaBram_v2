@@ -8,7 +8,8 @@
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 <link rel="stylesheet" href="css/navbar.css">
 <body>
-    <?php include('include/nav.inc'); ?>
+    <?php //include('include/nav.inc');
+    include('nav.php'); ?>
 
     <h3> Modifier un parcours</h3>
 
