@@ -93,12 +93,12 @@
                             <div class="col-md">
                                 <form name="frm" action="requetes/update_bdd_course.php" method="POST">
                                     <div class="col-md">
-                                        <label for="fname">Identifiant de la Course</label>
+                                        <label for="fname">Identifiant du Parcours</label>
                                         <input type="text" class="form-control" id="fname" name='fname' style="text-align:center" readonly>
                                     </div>
                                     <hr>
                                     <div class="col-md">
-                                        <label for="lname">Nom de la course</label>
+                                        <label for="lname">Nom du Parcours</label>
                                         <input type="text" class="form-control" id="lname" name='lname' placeholder="La Solidaria Bram">
                                     </div>
                                     <div class="col-md">
@@ -106,22 +106,35 @@
                                         <input type="date" class="form-control" id="date" name='date' placeholder="2019-08-02">
                                     </div>
                                     <div class="col-md">
-                                        <label for="asso">Association concernée</label>
-                                        <select class="form-control" id="asso" name='asso' >
-                                            <?php
-                                                $sql='SELECT id_asso, nom_asso FROM association ORDER BY nom_asso';
-                                                $rs=pg_exec($idc,$sql);
-
-                                                while($ligne=pg_fetch_assoc($rs)){
-                                                    print('<option value="'.$ligne['id_asso'].'">'.$ligne['nom_asso'].'</option>');
-                                                }
-                                            ?>
-                                        </select>
+                                        <label for="heure">Heure du départ</label>
+                                        <input type="time" class="form-control" id="heure" name='heure' placeholder="09:15">
                                     </div>
                                     <div class="col-md">
-                                        <label for="age">Informations complémentaires:</label>
-                                        <textarea class="form-control" rows="5" id="age" name='age'></textarea>
+                                        <label for="long">Longueur</label>
+                                        <input type="number" class="form-control" id="long" name='long' placeholder="5">
                                     </div>
+                                    <div class="col-md">
+                                        <label for="Deniv">Denivele</label>
+                                        <input type="number" class="form-control" id="Deniv" name='Deniv'></input>
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="type">Type</label>
+                                        <input type="text" class="form-control" id="type" name='type'></input>
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="niv">Niveau</label>
+                                        <input type="number" class="form-control" id="niv" name='niv'></input>
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="tarif">Tarif</label>
+                                        <input type="number" class="form-control" id="tarif" name='tarif'></input>
+                                    </div>
+
+
+
+
+
+
                                     <div class="row">
                                         <div>
                                             <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
