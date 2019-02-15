@@ -7,7 +7,6 @@
 
   <?php
     include("include/bootstrap.inc");
-    include("include/jquery.inc");
     ?>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
