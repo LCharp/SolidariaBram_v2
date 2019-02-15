@@ -17,6 +17,6 @@
 
 ?>
 <script type="text/javascript">
-	alert("Parcours enregistré")
-	document.location.href='../index.php'
+	//alert("Parcours enregistré")
+	document.location.href='../gestion_parcours.php'
 </script>
