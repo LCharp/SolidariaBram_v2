@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html lang="fr">
-<?php
-    session_start();
-?>
+<html lang="en">
 <head>
-  <title>La Solidaria Bram</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solidaria Bram</title>
+<?php
+	include("include/bootstrap.inc")
+?>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="css/navbar.css">
+<script type="text/javascript">
+	// Prevent dropdown menu from closing when click inside the form
+	$(document).on("click", ".navbar-right .dropdown-menu", function(e){
+		e.stopPropagation();
+	});
+</script>
 </head>
 <body>
+    <!-- Appel Navbar -->
+    <?php
+        session_start();
+        include('include/nav.inc');
 
-<?php include('include/nav.inc'); ?>
+    ?>
 
-<div class="container">
-  <h3>La Solidaria Bram</h3>
-  <p>Course à Pied Solidaire de Bram</p>
-</div>
 
 </body>
 </html>

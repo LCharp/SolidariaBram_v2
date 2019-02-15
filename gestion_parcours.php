@@ -91,15 +91,15 @@
                         </div>
                         <div class="modal-body">
                             <div class="col-md">
-                                <form name="frm" action="requetes/update_bdd_course.php" method="POST">
+                                <form name="frm" action="requetes/update_bdd_parcours.php" method="POST">
                                     <div class="col-md">
-                                        <label for="fname">Identifiant du Parcours</label>
-                                        <input type="text" class="form-control" id="fname" name='fname' style="text-align:center" readonly>
+                                        <label for="idp">Identifiant du Parcours</label>
+                                        <input type="text" class="form-control" id="idp" name='idp' style="text-align:center" readonly>
                                     </div>
                                     <hr>
                                     <div class="col-md">
-                                        <label for="lname">Nom du Parcours</label>
-                                        <input type="text" class="form-control" id="lname" name='lname' placeholder="La Solidaria Bram">
+                                        <label for="name">Nom du Parcours</label>
+                                        <input type="text" class="form-control" id="name" name='name' placeholder="La Solidaria Bram">
                                     </div>
                                     <div class="col-md">
                                         <label for="date">Date de la course</label>
@@ -114,8 +114,8 @@
                                         <input type="number" class="form-control" id="long" name='long' placeholder="5">
                                     </div>
                                     <div class="col-md">
-                                        <label for="Deniv">Denivele</label>
-                                        <input type="number" class="form-control" id="Deniv" name='Deniv'></input>
+                                        <label for="deniv">Denivele</label>
+                                        <input type="number" class="form-control" id="deniv" name='deniv'></input>
                                     </div>
                                     <div class="col-md">
                                         <label for="type">Type</label>
@@ -129,12 +129,6 @@
                                         <label for="tarif">Tarif</label>
                                         <input type="number" class="form-control" id="tarif" name='tarif'></input>
                                     </div>
-
-
-
-
-
-
                                     <div class="row">
                                         <div>
                                             <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
@@ -223,11 +217,16 @@
         function checkEmptyInput()
         {
             var isEmpty = false,
-            fname = document.getElementById("fname").value,
-            lname = document.getElementById("lname").value,
-            age = document.getElementById("age").value;
-            asso = document.getElementById("asso").value;
+            idp = document.getElementById("idp").value,
+            name = document.getElementById("name").value,
             date = document.getElementById("date").value;
+            heure = document.getElementById("heure").value;
+            long = document.getElementById("long").value;
+            deniv = document.getElementById("deniv").value;
+            type = document.getElementById("type").value;
+            niv = document.getElementById("niv").value;
+            tarif = document.getElementById("tarif").value;
+
 
             if(fname === ""){
                 alert("First Name Connot Be Empty");
@@ -261,11 +260,15 @@
                 {
                     // récupère la ligne selectionnée
                     rIndex = this.rowIndex;
-                    document.getElementById("fname").value = this.cells[0].innerHTML;
-                    document.getElementById("lname").value = this.cells[1].innerHTML;
-                    document.getElementById("age").value = this.cells[2].innerHTML;
-                    document.getElementById("asso").value = this.cells[3].innerHTML;
-                    document.getElementById("date").value = this.cells[4].innerHTML;
+                    document.getElementById("idp").value = this.cells[0].innerHTML;
+                    document.getElementById("name").value = this.cells[1].innerHTML;
+                    document.getElementById("date").value = this.cells[2].innerHTML;
+                    document.getElementById("heure").value = this.cells[3].innerHTML;
+                    document.getElementById("long").value = this.cells[4].innerHTML;
+                    document.getElementById("deniv").value = this.cells[5].innerHTML;
+                    document.getElementById("type").value = this.cells[6].innerHTML;
+                    document.getElementById("niv").value = this.cells[7].innerHTML;
+                    document.getElementById("tarif").value = this.cells[8].innerHTML;
 
                     //ouvre le menu modal
                     $('#exampleModalCenter').modal('show');
