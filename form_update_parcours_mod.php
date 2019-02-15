@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
-
-<!-- header -->
 <?php
-    include("header_form_parcours.php");
+    session_start();
 ?>
-
+<link rel="stylesheet" href="css/navbar.css">
+<!-- header -->
+<?php include("header_form_parcours.php"); ?>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="css/navbar.css">
 <body>
     <?php
-        include("nav.php");
+        include('include/nav.inc');
         $selectid = $_POST['inputId'];
     ?>
 

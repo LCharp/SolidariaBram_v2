@@ -7,19 +7,18 @@
     <title>La Solidaria Bram</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <?php
         include("include/bootstrap.inc");
      ?>
-
     <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="css/css_tableau.css"/>
-
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 
 <body>
     <?php
-        include("nav.php");
+        include('include/nav.inc');
         include('include/connect.php');
         $idc = connect();
     ?>

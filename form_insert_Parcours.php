@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
+<?php
+    session_start();
+?>
 
-<!-- header -->
 <?php
     include("header_form_parcours.php");
 ?>
+<link rel="stylesheet" href="css/navbar.css">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
 
 <body>
     <?php
-        include("nav.php");
+        include('include/nav.inc');
         include('./include/connect.php');
         $idc = connect();
         $sql='SELECT id_p FROM parcours ORDER BY id_p DESC';

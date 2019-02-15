@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+    session_start();
+?>
 <head>
   <title>La Solidaria Bram</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <?php
     include("include/bootstrap.inc");
     ?>
-
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <style type="text/css">
@@ -63,7 +66,7 @@
   </style>
 </head>
 <body>
-  <?php include("nav.php") ?>
+  <?php include('include/nav.inc'); ?>
 
 
 <div class="container">

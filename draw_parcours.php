@@ -14,10 +14,13 @@ session_start();
         include("include/easybutton.inc");
     ?>
 <link rel="stylesheet" href="css/css_drawmap.css"/>
+<link rel="stylesheet" href="css/navbar.css">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
 </head>
 
 <body>
-    <?php include("nav.php") ?>
+    <?php include('include/nav.inc'); ?>
     <h3> Dessiner votre parcours</h5>
             <div id="map"></div>
             <script>

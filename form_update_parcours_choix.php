@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
-
+<?php
+    session_start();
+?>
 <!-- header -->
 <?php include("header_form_parcours.php"); ?>
-
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="css/navbar.css">
 <body>
-    <?php include("nav.php"); ?>
+    <?php include('include/nav.inc'); ?>
 
     <h3> Modifier un parcours</h3>
 
