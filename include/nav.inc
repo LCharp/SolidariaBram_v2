@@ -24,6 +24,8 @@ if (isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION['or
                     <ul class="dropdown-menu">
                       <li><a href="affichage_course.php">Gestion des Courses</a></li>
                       <li class="divider"></li>
+                      <li><a href="admin_association.php">Choisir l\'association</a></li>
+                      <li class="divider"></li>
                       <li><a href="form_insert_parcours.php">Créer Parcours</a></li>
                       <li><a href="form_update_parcours_choix.php">Modifier Parcours</a></li>
                       <li class="divider"></li>

@@ -19,7 +19,7 @@ th {text-align: left;}
 
     <?php
     $q = intval($_GET['q']);
-    include('../includes/connect.inc');
+    include('../include/connect.php');
     $idc = connect();
     $sql= "select nom_asso, adresse_asso, cp_asso, ville_asso, description_asso,
     tel_asso, nom_directeur_asso

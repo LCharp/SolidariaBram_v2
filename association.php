@@ -12,6 +12,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="css/navbar.css">
 
+<style>
+	hr{
+		border:         none;
+		border-left:    1px solid hsla(200, 10%, 50%,50);
+		height:         100vh;
+		width:          1px;
+	}
+</style>
 
 
 <script type="text/javascript">
@@ -49,10 +57,13 @@
     ?>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-10">
+			<div class="col-md-9">
 				<p> Cette année, c'est l'association <?php echo $nomassoc;?> présidé par <?php echo $dirassoc ?> qui est la bénéficiaire de notre course</p>
 			    <p> Voici quelques mots laissés par l'association : </p>
 			    <?php echo $descrassoc;?>
+			</div>
+			<div class="col-md-1">
+				<hr>
 			</div>
 			<div class="col-md-2">
 				<p> Coordonnées :</p>

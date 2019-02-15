@@ -6,11 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Choix Association</title>
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="styles/navbar.css">
-<script src="lib/jquery/jquery-3.3.1.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<?php
+    include("include/bootstrap.inc")
+?>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="css/navbar.css"/>
+
 <style>
 .btn-vert {
   color: #FFFFFF;
@@ -45,6 +46,14 @@ table, td, th {
 }
 
 th {text-align: left;}
+
+hr{
+	border:         none;
+	border-left:    1px solid hsla(200, 10%, 50%,50);
+	height:         100vh;
+	width:          1px;
+}
+
 </style>
 <script type="text/javascript">
 	// Prevent dropdown menu from closing when click inside the form
@@ -61,11 +70,11 @@ th {text-align: left;}
     <br>
     <div class="container-fluid">
         <div class="row blabla">
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <p>Infos association selectionnée : </p>
                 <div id="txtHint">
                     <?php
-                    include('./includes/connect.inc');
+                    include('./include/connect.php');
                     $idc = connect();
                     $sql= "select nom_asso, adresse_asso, cp_asso, ville_asso, description_asso,
                     tel_asso, nom_directeur_asso

@@ -65,7 +65,7 @@
                             }
                         ?>
                     </table>
-                    <p style="font-style: italic;color:#6897bb;"> * cliquer sur une ligne du tableau pour modifier une course</p>
+                    <p style="font-style: italic;color:#33cabb;"> * cliquer sur une ligne du tableau pour modifier une course</p>
                     <!-- <button onclick="location.href = 'form_insert_course.php';" type="button" class="btn btn-success">Ajouter une course</button> -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalInsert">
                         Ajouter une course
