@@ -57,7 +57,8 @@
             }
             else
             {
-                $sql1= "select * from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p = crypt('".$_REQUEST['password']."',mdp_p)";
+                //$sql1= "select * from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p = crypt('".$_REQUEST['password']."',mdp_p)";
+                $sql1= "select * from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p = '".$_REQUEST['password']."'";
                 $result=pg_query($idc,$sql1);
                 $num_rows=pg_num_rows($result);
                 if($num_rows>0)

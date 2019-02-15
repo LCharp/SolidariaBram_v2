@@ -43,7 +43,7 @@
         include('./include/connect.php');
         $idc = connect();
 
-        $sql = 'select nom_asso, adresse_asso, cp_asso, ville_asso, description_asso,tel_asso, nom_directeur_asso from association where asso_check = true';
+        $sql = 'select nom_asso, adresse_asso, cp_asso, ville_asso, description_asso, tel_asso, nom_directeur_asso from association';
         $resultat = pg_exec($idc, $sql);
         while($ligne = pg_fetch_assoc($resultat)) {
             $nomassoc = $ligne['nom_asso'];

@@ -15,7 +15,8 @@
         else
         {
             echo "test";
-            $sql1= "select prenom_p, organisateur from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p = crypt('".$_REQUEST['password']."',mdp_p)";
+            //$sql1= "select prenom_p, organisateur from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p = crypt('".$_REQUEST['password']."',mdp_p)";
+            $sql1= "select prenom_p, organisateur from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p ='".$_REQUEST['password']."'";
             $result=pg_query($idc,$sql1);
             while($ligne = pg_fetch_assoc($result)) {
                 $prenom = $ligne['prenom_p'];

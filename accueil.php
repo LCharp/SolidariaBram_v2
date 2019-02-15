@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+	session_start();
+?>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -20,11 +23,8 @@
 <body>
     <!-- Appel Navbar -->
     <?php
-        session_start();
         include('include/nav.inc');
-
     ?>
-
 
 </body>
 </html>
