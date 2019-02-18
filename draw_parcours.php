@@ -10,7 +10,7 @@
     <?php
         include("include/bootstrap.inc");
         include("include/fontawesome.inc");
-        include("scripts_draw.php");
+        include("include/scripts_draw.php");
         include("include/easybutton.inc");
     ?>
 <link rel="stylesheet" href="css/css_drawmap.css"/>

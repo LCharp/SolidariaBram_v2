@@ -22,9 +22,9 @@ if (isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION['or
                 <li class="nav-item dropdown">
     				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Gestion des Parcours <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                      <li><a href="affichage_course.php">Gestion des Courses</a></li>
+                        <li><a href="admin_association.php">Choisir l\'association</a></li>
                       <li class="divider"></li>
-                      <li><a href="admin_association.php">Choisir l\'association</a></li>
+                      <li><a href="affichage_course.php">Gestion des Courses</a></li>
                       <li class="divider"></li>
                       <li><a href="gestion_parcours.php">Gestion des Parcours</a></li>
                       <li class="divider"></li>

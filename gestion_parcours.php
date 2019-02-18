@@ -138,7 +138,7 @@
                                     </div>
                                     <div class="row">
                                         <div>
-                                            <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
+                                            <input type="submit" class="btn btn-primary" style="margin-top: 5px;"></button>
                                         </div>
                                     </div>
                                 </form>
