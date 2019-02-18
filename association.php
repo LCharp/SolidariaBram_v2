@@ -32,8 +32,8 @@
 <body>
     <?php
 		session_start();
-		//include('include/nav.inc');
-		include('nav.php');
+		include('include/nav.inc');
+		//include('nav.php');
         $nomassoc = "";
         $adrassoc = "";
         $cpassoc = "";
@@ -61,7 +61,9 @@
 			<div class="col-md-9">
 				<p> Cette année, c'est l'association <?php echo $nomassoc;?> présidé par <?php echo $dirassoc ?> qui est la bénéficiaire de notre course</p>
 			    <p> Voici quelques mots laissés par l'association : </p>
-			    <?php echo $descrassoc;?>
+			    <?php
+					echo $descrassoc;
+				?>
 			</div>
 			<div class="col-md-1">
 				<hr>

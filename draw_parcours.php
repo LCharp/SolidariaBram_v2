@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-session_start();
+    session_start();
 ?>
 <html lang="fr" dir="ltr">
 <head>
@@ -21,8 +21,8 @@ session_start();
 
 <body>
     <?php
-    //include('include/nav.inc');
-    include('nav.php');
+        include('include/nav.inc');
+        //include('nav.php');
     ?>
     <h3> Dessiner votre parcours</h5>
             <div id="map"></div>
