@@ -67,8 +67,8 @@
 </head>
 <body>
   <?php
-      //include('include/nav.inc');
-      include('nav.php');
+      include('include/nav.inc');
+      //include('nav.php');
    ?>
 
 

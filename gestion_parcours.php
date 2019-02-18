@@ -27,8 +27,8 @@
 
     <body>
         <?php
-        //include('include/nav.inc');
-        include('nav.php');
+            include('include/nav.inc');
+            //include('nav.php');
             include('./include/connect.php');
             $idc = connect();
         ?>
@@ -71,10 +71,10 @@
                             }
                         ?>
                     </table>
-                    <p style="font-style: italic;color:#33cabb;"> * cliquer sur une ligne du tableau pour modifier une course</p>
+                    <p style="font-style: italic;color:#33cabb;"> * cliquer sur une ligne du tableau pour modifier un parcours</p>
                     <!-- <button onclick="location.href = 'form_insert_course.php';" type="button" class="btn btn-success">Ajouter une course</button> -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalInsert">
-                        Ajouter une course
+                        Ajouter une Parcours
                     </button>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Ajouter une course</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un parcours</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -161,9 +161,9 @@
                         ?>
                         <div class="modal-body">
                             <div class="col-md">
-                                <form name="frm" action="requetes/insert_bdd_course.php" method="POST">
+                                <form name="frm" action="requetes/insert_bdd_parcours.php" method="POST">
                                     <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputId">Identifiant de la Course</label>
+                                        <label for="inputId">Identifiant du parcours</label>
                                         <input type="text" class="form-control" id="inputId" name='inputId' value='<?php echo $idcourse ?>' style="text-align:center" readonly>
                                     </div>
                                     <hr>

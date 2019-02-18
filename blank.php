@@ -22,8 +22,8 @@
     <!-- Appel Navbar -->
     <?php
         session_start();
-		//include('include/nav.inc');
-		include('nav.php');
+				include('include/nav.inc');
+				//include('nav.php');
 
     ?>
 

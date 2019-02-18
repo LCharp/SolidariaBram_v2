@@ -27,8 +27,8 @@
 
     <body>
         <?php
-        //include('include/nav.inc');
-        include('nav.php');
+            include('include/nav.inc');
+            //include('nav.php');
             include('./include/connect.php');
             $idc = connect();
         ?>
