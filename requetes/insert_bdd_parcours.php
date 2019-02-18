@@ -1,14 +1,14 @@
 <?php
 
 	$id = $_POST['inputId'];
-	$lieu = $_POST['inputLieu'];
+	$lieu = $_POST['inputName'];
 	$date = $_POST['inputDate'];
 	$heure = $_POST['inputHeure'];
 	$longueur = $_POST['inputLg'];
 	$denivele = $_POST['inputDeniv'];
 	$type = $_POST['inputType'];
 	$tarif = $_POST['inputTarif'];
-	$difficulte = $_POST['inputDiff'];
+	$difficulte = $_POST['inputNiv'];
 
 	include('../include/connect.php');
 	$idc = connect();

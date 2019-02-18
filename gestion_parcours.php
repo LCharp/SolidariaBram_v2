@@ -94,41 +94,47 @@
                             <div class="col-md">
                                 <form name="frm" action="requetes/update_bdd_parcours.php" method="POST">
                                     <div class="col-md">
-                                        <label for="idp">Identifiant du Parcours</label>
-                                        <input type="text" class="form-control" id="idp" name='idp' style="text-align:center" readonly>
+                                        <label for="inputId">Identifiant du Parcours</label>
+                                        <input type="text" class="form-control" id="inputId" name='inputId' style="text-align:center" readonly>
                                     </div>
                                     <hr>
                                     <div class="col-md">
-                                        <label for="name">Nom du Parcours</label>
-                                        <input type="text" class="form-control" id="name" name='name' placeholder="La Solidaria Bram">
+                                        <label for="inputName">Nom du Parcours</label>
+                                        <input type="text" class="form-control" id="inputName" name='inputName' placeholder="La Solidaria Bram">
                                     </div>
                                     <div class="col-md">
-                                        <label for="date">Date de la course</label>
-                                        <input type="date" class="form-control" id="date" name='date' placeholder="2019-08-02">
+                                        <label for="inputDate">Date de la course</label>
+                                        <input type="date" class="form-control" id="inputDate" name='inputDate' placeholder="2019-08-02">
                                     </div>
                                     <div class="col-md">
-                                        <label for="heure">Heure du départ</label>
-                                        <input type="time" class="form-control" id="heure" name='heure' placeholder="09:15">
+                                        <label for="inputHeure">Heure du départ</label>
+                                        <input type="time" class="form-control" id="inputHeure" name='inputHeure' placeholder="09:15">
                                     </div>
                                     <div class="col-md">
-                                        <label for="long">Longueur</label>
-                                        <input type="number" class="form-control" id="long" name='long' placeholder="5">
+                                        <label for="inputLg">Longueur</label>
+                                        <input type="number" class="form-control" id="inputLg" name='inputLg' placeholder="5">
                                     </div>
                                     <div class="col-md">
-                                        <label for="deniv">Denivele</label>
-                                        <input type="number" class="form-control" id="deniv" name='deniv'></input>
+                                        <label for="inputDeniv">Denivele</label>
+                                        <input type="number" class="form-control" id="inputDeniv" name='inputDeniv'></input>
                                     </div>
                                     <div class="col-md">
-                                        <label for="type">Type</label>
-                                        <input type="text" class="form-control" id="type" name='type'></input>
+                                        <label for="inputType">Type de parcours</label>
+                                        <select id="inputType" name='inputType' class="form-control">
+                                            <option selected>Route</option>
+                                            <option>Route et Chemins</option>
+                                            <option>Chemins</option>
+                                            <option>Trail</option>
+                                            <option>Cross Country</option>
+                                        </select>
                                     </div>
                                     <div class="col-md">
-                                        <label for="niv">Niveau</label>
-                                        <input type="number" class="form-control" id="niv" name='niv'></input>
+                                        <label for="inputNiv">Niveau</label>
+                                        <input type="number" class="form-control" id="inputNiv" name='inputNiv' min="1" max="5"></input>
                                     </div>
                                     <div class="col-md">
-                                        <label for="tarif">Tarif</label>
-                                        <input type="number" class="form-control" id="tarif" name='tarif'></input>
+                                        <label for="inputTarif">Tarif</label>
+                                        <input type="number" class="form-control" id="inputTarif" name='inputTarif'></input>
                                     </div>
                                     <div class="row">
                                         <div>
@@ -154,50 +160,63 @@
                             </button>
                         </div>
                         <?php
-                            $sql='SELECT id_course FROM course ORDER BY id_course DESC';
+                            $sql='SELECT id_p FROM parcours ORDER BY id_p DESC';
                             $rs=pg_exec($idc,$sql);
                             $ligne=pg_fetch_assoc($rs);
-                            $idcourse = $ligne['id_course'] + 1;
+                            $idp = $ligne['id_p'] + 1;
                         ?>
                         <div class="modal-body">
                             <div class="col-md">
-                                <form name="frm" action="requetes/insert_bdd_parcours.php" method="POST">
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputId">Identifiant du parcours</label>
-                                        <input type="text" class="form-control" id="inputId" name='inputId' value='<?php echo $idcourse ?>' style="text-align:center" readonly>
-                                    </div>
-                                    <hr>
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputLieu">Nom de la course</label>
-                                        <input type="text" class="form-control" id="inputNomC" name='inputNomC' placeholder="La Solidaria Bram" style="text-align:center">
-                                    </div>
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputLieu">Date de la course</label>
-                                        <input type="date" class="form-control" id="inputDate" name='inputDate' placeholder="2019-08-02" style="text-align:center">
-                                    </div>
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputId">Association concernée</label>
-                                        <select class="form-control" id="inputIdAsso" name='inputIdAsso' >
-                                            <?php
-                                                $sql='SELECT id_asso, nom_asso FROM association ORDER BY nom_asso';
-                                                $rs=pg_exec($idc,$sql);
-
-                                                while($ligne=pg_fetch_assoc($rs)){
-                                                    print('<option value="'.$ligne['id_asso'].'">'.$ligne['nom_asso'].'</option>');
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="comment">Informations complémentaires:</label>
-                                        <textarea class="form-control" rows="5" id="inputInfos" name='inputInfos'></textarea>
-                                    </div>
-                                    <div class="row">
-                                        <div>
-                                            <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
-                                        </div>
-                                    </div>
-                                </form>
+                              <form name="frm" action="requetes/insert_bdd_parcours.php" method="POST">
+                                  <div class="col-md">
+                                      <label for="inputId">Identifiant du Parcours</label>
+                                      <input type="text" class="form-control" id="inputId" name='inputId' value="<?php echo $idp ?>" style="text-align:center" readonly>
+                                  </div>
+                                  <hr>
+                                  <div class="col-md">
+                                      <label for="inputName">Nom du Parcours</label>
+                                      <input type="text" class="form-control" id="inputName" name='inputName' placeholder="La Solidaria Bram">
+                                  </div>
+                                  <div class="col-md">
+                                      <label for="inputDate">Date de la course</label>
+                                      <input type="date" class="form-control" id="inputDate" name='inputDate' placeholder="2019-08-02">
+                                  </div>
+                                  <div class="col-md">
+                                      <label for="inputHeure">Heure du départ</label>
+                                      <input type="time" class="form-control" id="inputHeure" name='inputHeure' placeholder="09:15">
+                                  </div>
+                                  <div class="col-md">
+                                      <label for="inputLg">Longueur</label>
+                                      <input type="number" class="form-control" id="inputLg" name='inputLg' placeholder="5">
+                                  </div>
+                                  <div class="col-md">
+                                      <label for="inputDeniv">Denivele</label>
+                                      <input type="number" class="form-control" id="inputDeniv" name='inputDeniv'></input>
+                                  </div>
+                                  <div class="col-md">
+                                      <label for="inputType">Type de parcours</label>
+                                      <select id="inputType" name='inputType' class="form-control">
+                                          <option selected>Route</option>
+                                          <option>Route et Chemins</option>
+                                          <option>Chemins</option>
+                                          <option>Trail</option>
+                                          <option>Cross Country</option>
+                                      </select>
+                                  </div>
+                                  <div class="col-md">
+                                      <label for="inputNiv">Niveau</label>
+                                      <input type="number" class="form-control" id="inputNiv" name='inputNiv' min="1" max="5"></input>
+                                  </div>
+                                  <div class="col-md">
+                                      <label for="inputTarif">Tarif</label>
+                                      <input type="number" class="form-control" id="inputTarif" name='inputTarif'></input>
+                                  </div>
+                                  <div class="row">
+                                      <div>
+                                          <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
+                                      </div>
+                                  </div>
+                              </form>
                             </div>
                         </div>
                     </div>
@@ -218,15 +237,15 @@
         function checkEmptyInput()
         {
             var isEmpty = false,
-            idp = document.getElementById("idp").value,
-            name = document.getElementById("name").value,
-            date = document.getElementById("date").value;
-            heure = document.getElementById("heure").value;
-            long = document.getElementById("long").value;
-            deniv = document.getElementById("deniv").value;
-            type = document.getElementById("type").value;
-            niv = document.getElementById("niv").value;
-            tarif = document.getElementById("tarif").value;
+            idp = document.getElementById("inputId").value,
+            name = document.getElementById("inputName").value,
+            date = document.getElementById("inputDate").value;
+            heure = document.getElementById("inputHeure").value;
+            long = document.getElementById("inputLg").value;
+            deniv = document.getElementById("inputDeniv").value;
+            type = document.getElementById("inputType").value;
+            niv = document.getElementById("inputNiv").value;
+            tarif = document.getElementById("inputTarif").value;
 
 
             if(fname === ""){
@@ -261,15 +280,15 @@
                 {
                     // récupère la ligne selectionnée
                     rIndex = this.rowIndex;
-                    document.getElementById("idp").value = this.cells[0].innerHTML;
-                    document.getElementById("name").value = this.cells[1].innerHTML;
-                    document.getElementById("date").value = this.cells[2].innerHTML;
-                    document.getElementById("heure").value = this.cells[3].innerHTML;
-                    document.getElementById("long").value = this.cells[4].innerHTML;
-                    document.getElementById("deniv").value = this.cells[5].innerHTML;
-                    document.getElementById("type").value = this.cells[6].innerHTML;
-                    document.getElementById("niv").value = this.cells[7].innerHTML;
-                    document.getElementById("tarif").value = this.cells[8].innerHTML;
+                    document.getElementById("inputId").value = this.cells[0].innerHTML;
+                    document.getElementById("inputName").value = this.cells[1].innerHTML;
+                    document.getElementById("inputDate").value = this.cells[2].innerHTML;
+                    document.getElementById("inputHeure").value = this.cells[3].innerHTML;
+                    document.getElementById("inputLg").value = this.cells[4].innerHTML;
+                    document.getElementById("inputDeniv").value = this.cells[5].innerHTML;
+                    document.getElementById("inputType").value = this.cells[6].innerHTML;
+                    document.getElementById("inputNiv").value = this.cells[7].innerHTML;
+                    document.getElementById("inputTarif").value = this.cells[8].innerHTML;
 
                     //ouvre le menu modal
                     $('#exampleModalCenter').modal('show');
