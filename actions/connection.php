@@ -15,8 +15,7 @@
         else
         {
             echo "test";
-            //$sql1= "select prenom_p, organisateur from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p = crypt('".$_REQUEST['password']."',mdp_p)";
-            $sql1= "select prenom_p, organisateur from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p ='".$_REQUEST['password']."'";
+            $sql1= "select prenom_p, organisateur from individu where mail_p= '".$_REQUEST['email']."' AND mdp_p = crypt('".$_REQUEST['password']."',mdp_p)";
             $result=pg_query($idc,$sql1);
             while($ligne = pg_fetch_assoc($result)) {
                 $prenom = $ligne['prenom_p'];
@@ -27,7 +26,7 @@
             if($num_rows>0)
             {
                 // Connecté
-                header('Location: ../accueil.php');
+                header('Location: ../index.php');
 
                 session_start();
                 $_SESSION['email'] = $_POST['email'];
@@ -50,7 +49,7 @@
                     // Bon mail donc mauvais mdp
                     // echo "<label for='inputPassword' class='sr-only'>Mot de passe</label>";
                     // echo "<input type='password' name='password' id='inputPassword' class='form-control is-invalid' placeholder='Mot de passe' required>";
-                    header('Location: ../connection_mauvaismdp.php');
+                    header('Location: connection_mauvaismdp.php');
                 }
                 else
                 {

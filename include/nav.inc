@@ -116,8 +116,8 @@ else
     					</li>
     				</ul>
     			</li>
-    			<li class="nav-item">
-    				<a href="inscription.php" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Inscription</a>
+                <li class="nav-item">
+    				<a href="inscr.php" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Inscription</a>
     			</li>
     		</ul>
     	</div>
