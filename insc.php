@@ -1,11 +1,3 @@
-<head>
-		<meta charset="UTF-8"/>
-		<title>HTML</title>
-		<meta name="author" content="anais.grignon" />
-		<!-- Date: 2018-10-22 -->
-</head>
-
-<body>
 <?php
     include('include/connect.php');
  $idc=connect();
@@ -50,4 +42,3 @@
  $rs=pg_exec($idc, $sql);
 
 ?>
-</body>
