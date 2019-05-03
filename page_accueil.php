@@ -31,10 +31,10 @@
 			<td valign="center"><img alt="affiche de la course" src="images/affiche_course.jpg" align="center" width="600px" height="780px" >
 		</div>
 
-		      <div class="row marketing">
+		      <div class="row marketing" style="margin-top: 15%;">
 		        <div class="col-lg-6">
 		          <h3>Bienvenue dans cette nouvelle édition de Solidària Bram! </h3>
-		          <p></br> Nous sommes heureux de vous compter parmis nous.</br> Votre participation permet de financer différentes aides apportées aux enfants démunis. L'association bram solidaire s'occupe de redistribuer l'argent à bon escient. Toutes les actions de l'association sont consultables sur sa page visible en suivant ce lien:</p></p>
+		          <p></br> Nous sommes heureux de vous compter parmis nous.</br> Votre participation permet de financer différentes aides apportées aux enfants démunis.</br> L'association bram solidaire s'occupe de redistribuer l'argent à bon escient.</br> Toutes les actions de l'association sont consultables sur sa page visible en suivant ce lien:</p></p>
 		        </div>
 
 		        <div class="col-lg-6">

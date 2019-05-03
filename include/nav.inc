@@ -3,7 +3,7 @@ if (isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION['or
 {
     echo '<nav class="navbar navbar-default navbar-expand-lg navbar-light">
     	<div class="navbar-header d-flex col">
-    		<a class="navbar-brand" href="accueil.php">Solidaria<b>Bram</b></a>
+    		<a class="navbar-brand" href="pageaccueil.php">Solidaria<b>Bram</b></a>
     		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
     			<span class="navbar-toggler-icon"></span>
     			<span class="icon-bar"></span>
@@ -14,8 +14,8 @@ if (isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION['or
     	<!-- Collection of nav links, forms, and other content for toggling -->
     	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
     		<ul class="nav navbar-nav">
-    			<li class="nav-item"><a href="accueil.php" class="nav-link">Accueil</a></li>
-    			<li class="nav-item"><a href="association.php" class="nav-link">Association</a></li>
+    			<li class="nav-item"><a href="page-accueil.php" class="nav-link">Accueil</a></li>
+    			<li class="nav-item"><a href="page_association.php" class="nav-link">Association</a></li>
     			<li class="nav-item"><a href="affichage_parcours.php" class="nav-link">Les parcours</a></li>
     			<li class="nav-item"><a href="affichage_resultats.php" class="nav-link">Les résultats</a></li>
     			<li class="nav-item"><a href="blank.php" class="nav-link">Informations utiles</a></li>
@@ -47,7 +47,7 @@ else if(isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION
 {
     echo '<nav class="navbar navbar-default navbar-expand-lg navbar-light">
     	<div class="navbar-header d-flex col">
-    		<a class="navbar-brand" href="accueil.php">Solidaria<b>Bram</b></a>
+    		<a class="navbar-brand" href="page_accueil.php">Solidaria<b>Bram</b></a>
     		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
     			<span class="navbar-toggler-icon"></span>
     			<span class="icon-bar"></span>
@@ -58,8 +58,8 @@ else if(isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION
     	<!-- Collection of nav links, forms, and other content for toggling -->
     	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
     		<ul class="nav navbar-nav">
-    			<li class="nav-item"><a href="accueil.php" class="nav-link">Accueil</a></li>
-    			<li class="nav-item"><a href="association.php" class="nav-link">Association</a></li>
+    			<li class="nav-item"><a href="page_accueil.php" class="nav-link">Accueil</a></li>
+    			<li class="nav-item"><a href="page_association.php" class="nav-link">Association</a></li>
     			<li class="nav-item"><a href="#" class="nav-link">Les parcours</a></li>
     			<li class="nav-item"><a href="#" class="nav-link">Les résultats</a></li>
     			<li class="nav-item"><a href="#" class="nav-link">Informations utiles</a></li>
@@ -79,7 +79,7 @@ else
 {
     echo '<nav class="navbar navbar-default navbar-expand-lg navbar-light">
     	<div class="navbar-header d-flex col">
-    		<a class="navbar-brand" href="accueil.php">Solidaria<b>Bram</b></a>
+    		<a class="navbar-brand" href="page_accueil.php">Solidaria<b>Bram</b></a>
     		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
     			<span class="navbar-toggler-icon"></span>
     			<span class="icon-bar"></span>
@@ -90,8 +90,8 @@ else
     	<!-- Collection of nav links, forms, and other content for toggling -->
     	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
     		<ul class="nav navbar-nav">
-    			<li class="nav-item"><a href="accueil.php" class="nav-link">Accueil</a></li>
-    			<li class="nav-item"><a href="association.php" class="nav-link">Association</a></li>
+    			<li class="nav-item"><a href="page_accueil.php" class="nav-link">Accueil</a></li>
+    			<li class="nav-item"><a href="page_association.php" class="nav-link">Association</a></li>
     			<li class="nav-item"><a href="affichage_parcours.php" class="nav-link">Les parcours</a></li>
     			<li class="nav-item"><a href="affichage_resultats.php" class="nav-link">Les résultats</a></li>
     			<li class="nav-item"><a href="blank.php" class="nav-link">Informations utiles</a></li>

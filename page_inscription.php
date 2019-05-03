@@ -25,6 +25,8 @@
 		<!-- Appel Navbar -->
 		<?php
 			include('include/nav.inc');
+			include('include/connect.php');
+			$idc = connect();
 		?>
 		<form class="form-horizontal" action="requetes/insert_bdd_individu.php" method="post">
 			<fieldset>
@@ -133,8 +135,18 @@
 					<label class="col-md-4 control-label">Parcours choisi</label>
 					<div class="col-md-4">
 						<select id="zl_parcours" name="zl_parcours" class="form-control">
-							<option value="course1">9km</option>
-							<option value="course2">5km</option>
+							<?php
+									$sql="SELECT id_p, lieu , longueur_p, date_p, heure_p FROM parcours WHERE SUBSTR(date_p,1,4) = '2019' ORDER BY id_p";
+									$rs=pg_exec($idc,$sql);
+
+									while($ligne=pg_fetch_assoc($rs)){
+											if($ligne['id_p'] != $selectid){
+													print('<option value="'.$ligne['id_p'].'">'.$ligne['lieu'].' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
+											}else{
+													print('<option value="'.$ligne['id_p'].'" selected>'.$ligne['lieu'].' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
+											};
+									}
+							?>
 						</select>
 					</div>
 				</div>
