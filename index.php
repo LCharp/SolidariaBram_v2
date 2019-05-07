@@ -21,7 +21,8 @@
     <!-- Appel Navbar -->
     <?php
         session_start();
-		include('include/nav.inc');
+		header("Location: page_accueil.php");
+		exit();
 		//include('nav.php');
 
     ?>

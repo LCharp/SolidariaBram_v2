@@ -58,7 +58,7 @@
                     <label for="inputId">Identifiant de la course</label>
                     <select class="form-control" id="inputId" name='inputId' >
                         <?php
-                            $sql='SELECT id_p,lieu , longueur_p, date_p FROM parcours ORDER BY id_p';
+                            $sql='SELECT id_p, lieu, longueur_p, date_p FROM parcours ORDER BY id_p';
                             $rs=pg_exec($idc,$sql);
 
                             while($ligne=pg_fetch_assoc($rs)){

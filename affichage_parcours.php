@@ -78,7 +78,6 @@
 
 <?php
   $gpx = 'gpx/demo.gpx';
-  $gpx2 = 'gpx/demo2.gpx';
 ?>
 <section id="demo" class="gpx" data-gpx-source="<?php echo($gpx) ?>" data-map-target="demo-map">
   <header>
@@ -98,26 +97,6 @@
   </footer>
 </section>
 
-<section id="demo2" class="gpx" data-gpx-source="<?php echo($gpx2) ?>" data-map-target="demo-map">
-  <header>
-    <h5><b>Parcours n°2</b>: 5km - Heure: 10h30 - Prix: 5€</h5>
-    <span class="start"></span>
-  </header>
-
-  <article>
-    <div class="map" id="demo2-map"></div>
-  </article>
-
-  <footer>
-    <ul class="info">
-      <form class="" action="inscription.php" method="post">
-        <input type="submit" class="btn btn-info" name="p1" value="S'inscrire">
-      </form>
-  </footer>
-</section>
-
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
 <script src="https://rawgithub.com/mpetazzoni/leaflet-gpx/master/gpx.js"></script>
 <script type="application/javascript">
@@ -134,14 +113,6 @@ L.marker([48.858190, 2.294470]).addTo(map)
     .bindPopup('This is the Eiffel Tower<br> Easily customizable.')
     .openPopup();
 
-
-// create a map in the "map" div, set the view to a given place and zoom
-var map2 = L.map('map2').setView([48.858190, 2.294470], 16);
-
-// add an OpenStreetMap tile layer
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map2);
 </script>
 
 </body>
