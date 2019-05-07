@@ -33,8 +33,7 @@
           $rs=pg_exec($idc,$sql);
 
           while($ligne=pg_fetch_assoc($rs)){
-            i = 1;
-            i = i + 1;
+
             print('<div class="col-md-4">
             <div class="panel-group">
             <div class="panel panel-default">
