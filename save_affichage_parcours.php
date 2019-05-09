@@ -29,19 +29,19 @@
     <h3>Les parcours de l'edition 2019</h5>
       <div class="row" style="">
       <?php
-          $sql="SELECT longueur_p, date_p, heure_p FROM parcours ORDER BY id_p";
+          $sql="SELECT longueur_p, date_p, heure_p FROM parcours WHERE date_p LIKE '2019%' ORDER BY id_p";
           $rs=pg_exec($idc,$sql);
-
+          $num_parcours = 0;
           while($ligne=pg_fetch_assoc($rs)){
-
+            $num_parcours = $num_parcours + 1;
             print('<div class="col-md-4">
             <div class="panel-group">
             <div class="panel panel-default">
             <div class="panel-heading">');
-            print('<b>Parcours n°1:</b> Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p']);
+            print('<b>Parcours n°'.$num_parcours.':</b> Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p']);
             print('</div>
             <div class="panel-body" style="height:500px;">
-                    <div id="map"style ="height: 470px; width: 590px;">
+                    <div id="map" style ="height: 470px; width: 590px;">
                     </div>
                     </div>
             <div class="panel-footer">
