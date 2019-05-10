@@ -57,7 +57,7 @@
     $sql="SELECT id_parcours_carte, forme_p, id_p FROM c_parcours";
     $rs=pg_exec($idc,$sql);
     while($ligne=pg_fetch_assoc($rs)){
-        data = $ligne['forme_p'];
+        $data = $ligne['forme_p'];
     }
 
       ?>
@@ -84,11 +84,61 @@
       var res = str.substr(3, 4);
       //alert(res);
 
+      // var data = "<?php echo $data ?>";
+
+      var data = {
+          "type": "FeatureCollection",
+          "features": [{
+            "type": "Feature",
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[2.10, 43.20],[3, 44.20]]
+            },
+            "properties": {
+              "color": "red"
+            }
+          }, {
+            "type": "Feature",
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[-2,0 ],[2, 0]]
+            },
+            "properties": {
+              "color": "yellow"
+            }
+          }]
+        };
+
+        var data = {
+            "{"type":"FeatureCollection",
+            "features":[{
+                "type":"Feature",
+                "geometry":{
+                    "type":"LineString",
+                    "coordinates":[[2.110594,43.244918],[2.100938,43.241759],[2.11274,43.235597],[2.120508,43.237693],[2.117203,43.241759]]
+                },
+                "properties":{
+                }
+            },]}"
+        }
+
+      var geoJsonLayer = L.geoJson(data, {
+        onEachFeature: function (feature, layer) {
+          if (layer instanceof L.Polyline) {
+            layer.setStyle({
+              'color': feature.properties.color
+            });
+          }
+        }
+      });
+
+
       var laCarte = L.map('map'+res).setView([43.24, 2.1134], 15);
       // add an OpenStreetMap tile layer
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(laCarte);
+      geoJsonLayer.addTo(laCarte);
     	return (laCarte);
     }
 

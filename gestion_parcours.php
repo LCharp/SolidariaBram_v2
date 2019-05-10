@@ -49,7 +49,7 @@
                             <th>Terrain</th>
                             <th>Niveau</th>
                             <th>Tarif</th>
-                            <th>Parcours</th>
+                            <th>Tracé</th>
                         </tr>
                         <?php
                             $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte
@@ -59,10 +59,10 @@
                             while($ligne=pg_fetch_assoc($rs)){
                                 // vérification si un parcours à été tracé
                                 if (isset($ligne['id_parcours_carte'])) {
-                                    $draw = '✔️';
+                                    $draw = '<p class="text-success"> ✔️ </p>';
                                     $drawbutton ='<input type="button" value="Modifier" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location: /draw_parcours")"></button>';
                                 }else {
-                                    $draw = '❌';
+                                    $draw = '<p class="text-danger"> ❌</p>';
                                     $drawbutton ='<input type="button" value="Dessiner" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location: /draw_parcours")"></button>';
 
                                 };
@@ -85,7 +85,7 @@
                             }
                         ?>
                     </table>
-                    <p style="font-style: italic;color:#33cabb;"> * cliquer sur une ligne du tableau pour modifier un parcours</p>
+                    <p style="font-style: italic;color:#33cabb;"> * cliquer sur une ligne du tableau pour modifier les informations</p>
                     <!-- <button onclick="location.href = 'form_insert_course.php';" type="button" class="btn btn-success">Ajouter une course</button> -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalInsert">
                         Ajouter un parcours
