@@ -29,16 +29,16 @@
     <h3 style="align-items: center;">Les parcours de l'edition 2019</h5>
       <div class="row">
       <?php
-           $sql="SELECT longueur_p, date_p, heure_p FROM parcours WHERE date_p LIKE '2019%' ORDER BY id_p";
-           $rs=pg_exec($idc,$sql);
-           $num = 0;
-           while($ligne=pg_fetch_assoc($rs)){
+          $sql="SELECT longueur_p, date_p, heure_p FROM parcours WHERE date_p LIKE '2019%' ORDER BY id_p";
+          $rs=pg_exec($idc,$sql);
+          $num = 0;
+          while($ligne=pg_fetch_assoc($rs)){
             $num = $num + 1;
             print('<div class="col-md-4">
             <div class="panel-group">
             <div class="panel panel-default">
             <div class="panel-heading">');
-            print('<b>Parcours n°'.$num.':</b>');
+            print('<b>Parcours n°'.$num.':</b> Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p']);
             print('</div>
             <div class="panel-body" style="height:500px;">
                     <div id="map'.$num.'" style ="height: 470px; width: 590px;">
@@ -58,32 +58,30 @@
 
     <script>
 
-    var num = "<?php echo $num ?>";
-    //alert ("num = " + num);
-    var nummap = 1;
 
-    while (nummap <= num) {
-      //alert("boucle");
-      var nomCarte = "map"+ nummap;
-      //alert (nomCarte);
-      var map = createMap(nomCarte);
-      nummap = nummap + 1;
-    }
 
-    function createMap(nomCarte){
-      var carte = nomCarte;
-      //alert("Fonction "+nomCarte);
-      var str = nomCarte;
-      var res = str.substr(3, 4);
-      //alert(res);
 
-      var laCarte = L.map('map'+res).setView([43.24, 2.1134], 15);
-      // add an OpenStreetMap tile layer
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(laCarte);
-    	return (laCarte);
-    }
+        // create a map in the "map" div, set the view to a given place and zoom
+        var map1 = L.map('map1').setView([43.24, 2.1134], 15);
+        // add an OpenStreetMap tile layer
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map1);
+
+
+        // create a map in the "map" div, set the view to a given place and zoom
+        var map2 = L.map('map2').setView([43.24, 2.1134], 18);
+        // add an OpenStreetMap tile layer
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map2);
+
+        // create a map in the "map" div, set the view to a given place and zoom
+        var map3 = L.map('map3').setView([43.24, 2.1134], 10);
+        // add an OpenStreetMap tile layer
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map3);
 
     </script>
 
