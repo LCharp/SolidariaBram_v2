@@ -1,5 +1,5 @@
 <?php
-include('./includes/connect.inc');
+include('./include/connect.inc');
 $idc = connect();
 $association = $_POST['zl_association'];
 // Mettre toutes les assos en false

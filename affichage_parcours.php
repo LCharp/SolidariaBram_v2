@@ -38,7 +38,7 @@
             <div class="panel-group">
             <div class="panel panel-default">
             <div class="panel-heading">');
-            print('<b>Parcours n°'.$num.':</b>');
+            print('<b>Parcours n°'.$num.':</b> Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p']);
             print('</div>
             <div class="panel-body" style="height:500px;">
                     <div id="map'.$num.'" style ="height: 470px; width: 590px;">

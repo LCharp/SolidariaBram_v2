@@ -49,13 +49,25 @@
                             <th>Terrain</th>
                             <th>Niveau</th>
                             <th>Tarif</th>
+                            <th>Parcours</th>
                         </tr>
                         <?php
-                            $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p
+                            $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte
                             FROM parcours
                             ORDER BY id_p';
                             $rs=pg_exec($idc,$sql);
                             while($ligne=pg_fetch_assoc($rs)){
+                                // vérification si un parcours à été tracé
+                                if (isset($ligne['id_parcours_carte'])) {
+                                    $draw = '✔️';
+                                    $drawbutton ='<input type="button" value="Modifier" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location: /draw_parcours")"></button>';
+                                }else {
+                                    $draw = '❌';
+                                    $drawbutton ='<input type="button" value="Dessiner" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location: /draw_parcours")"></button>';
+
+                                };
+
+                                //affichage du tableau qui liste les parcours
                                 print('<tr>
                                     <td class="idP">'.$ligne['id_p'].'</td>
                                     <td class="name">'.$ligne['lieu'].'</td>
@@ -66,6 +78,8 @@
                                     <td class="type">'.$ligne['type_p'].'</td>
                                     <td class="niv">'.$ligne['niveau'].'</td>
                                     <td class="tarif">'.$ligne['tarif'].'</td>
+                                    <td class="drawed">'.$draw.'</td>
+                                    <td class="draw">'.$drawbutton.'</td>
                                 </tr>'
                                 );
                             }
@@ -74,7 +88,7 @@
                     <p style="font-style: italic;color:#33cabb;"> * cliquer sur une ligne du tableau pour modifier un parcours</p>
                     <!-- <button onclick="location.href = 'form_insert_course.php';" type="button" class="btn btn-success">Ajouter une course</button> -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalInsert">
-                        Ajouter une Parcours
+                        Ajouter un parcours
                     </button>
                 </div>
             </div>
