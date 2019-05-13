@@ -1,8 +1,8 @@
 <?php
 
     $geojson = $_GET['insertBD'];
-	$idgeojson = 5;
-    $idparcours = 7;
+	   $idgeojson = 2;
+    $idparcours = 8;
 
 	include('../include/connect.php');
 	$idc = connect();
@@ -13,7 +13,7 @@
 	$rs=pg_exec($idc,$sql);
 
 ?>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	//alert("Parcours enregistré")
 	document.location.href='../gestion_parcours.php'
-</script>
+</script> -->

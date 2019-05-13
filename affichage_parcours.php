@@ -45,8 +45,8 @@
                     </div>
                     </div>
             <div class="panel-footer">
-              <form class="" action="page_inscription.php" method="post">
-                <input type="submit" class="btn btn-info" name="p1" value="🏃 Inscription">
+              <form class=""action="page_inscription.php" method="post">
+                <input type="submit" class="btn btn-info" name="p'.$num.'" value="🏃 Inscription au parcours n°'.$num.'">
               </form>
             </div>
           </div>
@@ -56,9 +56,9 @@
 
     $sql="SELECT id_parcours_carte, forme_p, id_p FROM c_parcours";
     $rs=pg_exec($idc,$sql);
-    while($ligne=pg_fetch_assoc($rs)){
-        data = $ligne['forme_p'];
-    }
+    // while($ligne=pg_fetch_assoc($rs)){
+    //     data = $ligne['forme_p'];
+    // }
 
       ?>
     </div>
