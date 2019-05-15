@@ -41,7 +41,7 @@
                     <table id="table" align="center" class="table table-bordered table-hover" style="width: 80%;">
                         <tr>
                             <th>Identifiant du parcours</th>
-                            <th>Nom du parcours (lieu)</th>
+                            <th>Nom du parcours</th>
                             <th>Date</th>
                             <th>Heure</th>
                             <th>Longueur</th>
@@ -59,12 +59,11 @@
                             while($ligne=pg_fetch_assoc($rs)){
                                 // vérification si un parcours à été tracé
                                 if (isset($ligne['id_parcours_carte'])) {
-                                    $draw = '<p class="text-success"> ✔️ </p>';
-                                    $drawbutton ='<input type="button" value="Modifier" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location: /draw_parcours")"></button>';
+                                    $draw = ' ✔️ ';
+                                    $drawbutton ='<input type="button" value="Modifier" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location:draw_parcours")"></button>';
                                 }else {
-                                    $draw = '<p class="text-danger"> ❌</p>';
-                                    $drawbutton ='<input type="button" value="Dessiner" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location: /draw_parcours")"></button>';
-
+                                    $draw = '❌';
+                                    $drawbutton ='<input type="button" value="Dessiner" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location:draw_parcours")"></button>';
                                 };
 
                                 //affichage du tableau qui liste les parcours
@@ -79,7 +78,6 @@
                                     <td class="niv">'.$ligne['niveau'].'</td>
                                     <td class="tarif">'.$ligne['tarif'].'</td>
                                     <td class="drawed">'.$draw.'</td>
-                                    <td class="draw">'.$drawbutton.'</td>
                                 </tr>'
                                 );
                             }
@@ -149,6 +147,10 @@
                                     <div class="col-md">
                                         <label for="inputTarif">Tarif</label>
                                         <input type="number" class="form-control" id="inputTarif" name='inputTarif'></input>
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="textTracé">Tracé</label>
+                                        <input type="button" class="form-control" id="inputTracé" name='inputTracé' value ='<?php echo $draw; ?>'></input>
                                     </div>
                                     <div class="row">
                                         <div>

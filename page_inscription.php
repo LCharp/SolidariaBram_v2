@@ -27,8 +27,13 @@
 			include('include/nav.inc');
 			include('include/connect.php');
 			$idc = connect();
-			$selectid = $_POST['parcours'];
-			
+
+			if (empty($_POST['parcours']))
+			{$selectid = null;}
+			else {
+				$selectid = $_POST['parcours'];
+			}
+
 		?>
 		<form class="form-horizontal" action="requetes/insert_bdd_individu.php" method="post">
 			<fieldset>
