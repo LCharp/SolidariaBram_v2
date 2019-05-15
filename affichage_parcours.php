@@ -32,16 +32,17 @@
            $sql="SELECT p.id_p, longueur_p, date_p, heure_p, cp.id_parcours_carte, forme_p FROM parcours p INNER JOIN c_parcours cp ON p.id_p = cp.id_p WHERE date_p LIKE '2019%' ORDER BY id_p";
            $rs=pg_exec($idc,$sql);
            $num = 0;
+           $textNum = '';
+           $geojson = [];
            while($ligne=pg_fetch_assoc($rs)){
-            $num = $num + 1;
             $numparcours = $ligne['id_p'];
-            $forme = $ligne['forme_p'];
-            ${'geojson'.$num} = $forme . ";";
+            $geojson[] = $ligne['forme_p'];
+
             print('<div class="col-md-4">
             <div class="panel-group">
             <div class="panel panel-default">
             <div class="panel-heading">');
-            print('<b>Parcours n°'.$num.':</b> Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p']);
+            print('<b>Parcours n°'. ($num + 1) .':</b> Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p']);
             print('</div>
             <div class="panel-body" style="height:500px;">
                     <div id="map'.$num.'" style ="height: 470px; width: 590px;">
@@ -49,39 +50,39 @@
                     </div>
             <div class="panel-footer">
               <form class="" action="page_inscription.php" method="post">
-                <button type="submit" class="btn btn-info" name="parcours" value='.$numparcours.'>🏃 Inscription au Parcours n°'.$num.'</button>
+                <button type="submit" class="btn btn-info" name="parcours" value='.$numparcours.'>🏃 Inscription au Parcours n°'.($num + 1).'</button>
               </form>
             </div>
           </div>
         </div>
-      </div>');
-              };
+      </div>
+      ');
+        $textNum .= $num . ', ';
+        $num++;
+      }
      ?>
     </div>
 
     <script>
-    var data = <?php echo ${'geojson'.$num} ?>;
-    // alert ("test = "+ text );
-    var num = "<?php echo $num ?>";
-    //alert ("num = " + num);
-    var nummap = 1;
 
-    while (nummap <= num) {
-      //alert("boucle");
-      var nomCarte = "map"+ nummap;
-      //alert (nomCarte);
-      var map = createMap(nomCarte);
-      nummap = nummap + 1;
-    }
+    listNum = [<?= $textNum ?>];
+    tabGeoJSON = <?php echo json_encode($geojson); ?>;
 
-    function createMap(nomCarte){
-      var carte = nomCarte;
-      //alert("Fonction "+nomCarte);
-      var str = nomCarte;
-      var res = str.substr(3, 4);
-      //alert(res);
+    listNum.forEach((num) => {
+      var map = createMap(num, tabGeoJSON[num]);
+    });
 
-      var geoJsonLayer = L.geoJson(data, {
+    function createMap(num, geojson){
+
+      var nomCarte = "map" + num;
+
+      var laCarte = L.map(nomCarte).setView([43.24, 2.1134], 15);
+      // add an OpenStreetMap tile layer
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(laCarte);
+
+      L.geoJson(JSON.parse(geojson), {
         onEachFeature: function (feature, layer) {
           if (layer instanceof L.Polyline) {
             layer.setStyle({
@@ -89,15 +90,8 @@
             });
           }
         }
-      });
-
-
-      var laCarte = L.map('map'+res).setView([43.24, 2.1134], 15);
-      // add an OpenStreetMap tile layer
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(laCarte);
-      geoJsonLayer.addTo(laCarte);
+
     	return (laCarte);
     };
 
