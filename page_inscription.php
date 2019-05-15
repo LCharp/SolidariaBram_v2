@@ -27,6 +27,8 @@
 			include('include/nav.inc');
 			include('include/connect.php');
 			$idc = connect();
+			$selectid = $_POST['parcours'];
+			
 		?>
 		<form class="form-horizontal" action="requetes/insert_bdd_individu.php" method="post">
 			<fieldset>
@@ -138,12 +140,13 @@
 							<?php
 									$sql="SELECT id_p, lieu , longueur_p, date_p, heure_p FROM parcours WHERE SUBSTR(date_p,1,4) = '2019' ORDER BY id_p";
 									$rs=pg_exec($idc,$sql);
-
+									$num = 0;
 									while($ligne=pg_fetch_assoc($rs)){
+										$num = $num + 1;
 											if($ligne['id_p'] != $selectid){
-													print('<option value="'.$ligne['id_p'].'">'.$ligne['lieu'].' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
+													print('<option value="'.$ligne['id_p'].'">  '.$ligne['lieu'].' -  Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
 											}else{
-													print('<option value="'.$ligne['id_p'].'" selected>'.$ligne['lieu'].' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
+													print('<option value="'.$ligne['id_p'].'" selected>  '.$ligne['lieu'].' - Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
 											};
 									}
 							?>
