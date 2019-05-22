@@ -61,20 +61,6 @@
             });
 
             // Permet de télécharger les parcours en JSON
-            /*  L.easyButton('fa-download', function(){
-            $.each(dataJSON, function(key, value) {
-            var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(value));
-            var downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "parcours"+ (key + 1) +".json");
-            document.body.appendChild(downloadAnchorNode); // required for firefox
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
-
-            });
-            }).addTo(map);*/
-
-            // Permet de télécharger les parcours en JSON
             L.easyButton('fa-download', function(){
                 $.each(dataJSON, function(key, value) {
                 var data = drawnItems.toGeoJSON();
@@ -96,11 +82,6 @@
                 var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
                 var downloadAnchorNode = document.createElement('a');
                 window.location.href = "requetes/insert_geojson_parcours.php?insertBD=" + insertBD;
-                // downloadAnchorNode.setAttribute("href", dataStr);
-                // downloadAnchorNode.setAttribute("download", "parcours"+ (key + 1) +".geojson");
-                // document.body.appendChild(downloadAnchorNode); // required for firefox
-                // downloadAnchorNode.click();
-                // downloadAnchorNode.remove();
                 });
             }).addTo(map);
         </script>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-    session_start();
+session_start();
 ?>
 <html lang="fr" dir="ltr">
     <head>
@@ -67,7 +67,6 @@
                         ?>
                     </table>
                     <p style="font-style: italic;color:#33cabb;"> * cliquer sur une ligne du tableau pour modifier une course</p>
-                    <!-- <button onclick="location.href = 'form_insert_course.php';" type="button" class="btn btn-success">Ajouter une course</button> -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalInsert">
                         Ajouter une course
                     </button>
@@ -75,188 +74,185 @@
             </div>
         </div>
 
-            <!-- Modal du Update -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Modifier</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col-md">
-                                <form name="frm" action="requetes/update_bdd_course.php" method="POST">
-                                    <div class="col-md">
-                                        <label for="fname">Identifiant de la Course</label>
-                                        <input type="text" class="form-control" id="fname" name='fname' style="text-align:center" readonly>
-                                    </div>
-                                    <hr>
-                                    <div class="col-md">
-                                        <label for="lname">Nom de la course</label>
-                                        <input type="text" class="form-control" id="lname" name='lname' placeholder="La Solidaria Bram">
-                                    </div>
-                                    <div class="col-md">
-                                        <label for="date">Date de la course</label>
-                                        <input type="date" class="form-control" id="date" name='date' placeholder="2019-08-02">
-                                    </div>
-                                    <div class="col-md">
-                                        <label for="asso">Association concernée</label>
-                                        <select class="form-control" id="asso" name='asso' >
-                                            <?php
-                                                $sql='SELECT id_asso, nom_asso FROM association ORDER BY nom_asso';
-                                                $rs=pg_exec($idc,$sql);
+        <!-- Modal du Update -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modifier</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md">
+                            <form name="frm" action="requetes/update_bdd_course.php" method="POST">
+                                <div class="col-md">
+                                    <label for="fname">Identifiant de la Course</label>
+                                    <input type="text" class="form-control" id="fname" name='fname' style="text-align:center" readonly>
+                                </div>
+                                <hr>
+                                <div class="col-md">
+                                    <label for="lname">Nom de la course</label>
+                                    <input type="text" class="form-control" id="lname" name='lname' placeholder="La Solidaria Bram">
+                                </div>
+                                <div class="col-md">
+                                    <label for="date">Date de la course</label>
+                                    <input type="date" class="form-control" id="date" name='date' placeholder="2019-08-02">
+                                </div>
+                                <div class="col-md">
+                                    <label for="asso">Association concernée</label>
+                                    <select class="form-control" id="asso" name='asso' >
+                                        <?php
+                                            $sql='SELECT id_asso, nom_asso FROM association ORDER BY nom_asso';
+                                            $rs=pg_exec($idc,$sql);
 
-                                                while($ligne=pg_fetch_assoc($rs)){
-                                                    print('<option value="'.$ligne['id_asso'].'">'.$ligne['nom_asso'].'</option>');
-                                                }
-                                            ?>
-                                        </select>
+                                            while($ligne=pg_fetch_assoc($rs)){
+                                                print('<option value="'.$ligne['id_asso'].'">'.$ligne['nom_asso'].'</option>');
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md">
+                                    <label for="age">Informations complémentaires:</label>
+                                    <textarea class="form-control" rows="5" id="age" name='age'></textarea>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
                                     </div>
-                                    <div class="col-md">
-                                        <label for="age">Informations complémentaires:</label>
-                                        <textarea class="form-control" rows="5" id="age" name='age'></textarea>
-                                    </div>
-                                    <div class="row">
-                                        <div>
-                                            <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
-            <!-- Modal Insert -->
-            <div class="modal fade" id="ModalInsert" tabindex="-1" role="dialog" aria-labelledby="ModalInsert" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Ajouter une course</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <?php
-                            $sql='SELECT id_course FROM course ORDER BY id_course DESC';
-                            $rs=pg_exec($idc,$sql);
-                            $ligne=pg_fetch_assoc($rs);
-                            $idcourse = $ligne['id_course'] + 1;
-                        ?>
-                        <div class="modal-body">
-                            <div class="col-md">
-                                <form name="frm" action="requetes/insert_bdd_course.php" method="POST">
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputId">Identifiant de la Course</label>
-                                        <input type="text" class="form-control" id="inputId" name='inputId' value='<?php echo $idcourse ?>' style="text-align:center" readonly>
+        <!-- Modal Insert -->
+        <div class="modal fade" id="ModalInsert" tabindex="-1" role="dialog" aria-labelledby="ModalInsert" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Ajouter une course</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <?php
+                        $sql='SELECT id_course FROM course ORDER BY id_course DESC';
+                        $rs=pg_exec($idc,$sql);
+                        $ligne=pg_fetch_assoc($rs);
+                        $idcourse = $ligne['id_course'] + 1;
+                    ?>
+                    <div class="modal-body">
+                        <div class="col-md">
+                            <form name="frm" action="requetes/insert_bdd_course.php" method="POST">
+                                <div class="col-md" style="margin-top: 5px;">
+                                    <label for="inputId">Identifiant de la Course</label>
+                                    <input type="text" class="form-control" id="inputId" name='inputId' value='<?php echo $idcourse ?>' style="text-align:center" readonly>
+                                </div>
+                                <hr>
+                                <div class="col-md" style="margin-top: 5px;">
+                                    <label for="inputLieu">Nom de la course</label>
+                                    <input type="text" class="form-control" id="inputNomC" name='inputNomC' placeholder="La Solidaria Bram" style="text-align:center">
+                                </div>
+                                <div class="col-md" style="margin-top: 5px;">
+                                    <label for="inputLieu">Date de la course</label>
+                                    <input type="date" class="form-control" id="inputDate" name='inputDate' placeholder="2019-08-02" style="text-align:center">
+                                </div>
+                                <div class="col-md" style="margin-top: 5px;">
+                                    <label for="inputId">Association concernée</label>
+                                    <select class="form-control" id="inputIdAsso" name='inputIdAsso' >
+                                        <?php
+                                        $sql='SELECT id_asso, nom_asso FROM association ORDER BY nom_asso';
+                                        $rs=pg_exec($idc,$sql);
+                                        while($ligne=pg_fetch_assoc($rs)){
+                                            print('<option value="'.$ligne['id_asso'].'">'.$ligne['nom_asso'].'</option>');
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md" style="margin-top: 5px;">
+                                    <label for="comment">Informations complémentaires:</label>
+                                    <textarea class="form-control" rows="5" id="inputInfos" name='inputInfos'></textarea>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
                                     </div>
-                                    <hr>
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputLieu">Nom de la course</label>
-                                        <input type="text" class="form-control" id="inputNomC" name='inputNomC' placeholder="La Solidaria Bram" style="text-align:center">
-                                    </div>
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputLieu">Date de la course</label>
-                                        <input type="date" class="form-control" id="inputDate" name='inputDate' placeholder="2019-08-02" style="text-align:center">
-                                    </div>
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="inputId">Association concernée</label>
-                                        <select class="form-control" id="inputIdAsso" name='inputIdAsso' >
-                                            <?php
-                                                $sql='SELECT id_asso, nom_asso FROM association ORDER BY nom_asso';
-                                                $rs=pg_exec($idc,$sql);
-
-                                                while($ligne=pg_fetch_assoc($rs)){
-                                                    print('<option value="'.$ligne['id_asso'].'">'.$ligne['nom_asso'].'</option>');
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md" style="margin-top: 5px;">
-                                        <label for="comment">Informations complémentaires:</label>
-                                        <textarea class="form-control" rows="5" id="inputInfos" name='inputInfos'></textarea>
-                                    </div>
-                                    <div class="row">
-                                        <div>
-                                            <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
         <script>
-
-        window.onload = function () {
-            addr = document.getElementById("flop");
-        }
-
-        var rIndex,
-        table = document.getElementById("table");
-
-        // Vérifie si un input est vide
-        function checkEmptyInput()
-        {
-            var isEmpty = false,
-            fname = document.getElementById("fname").value,
-            lname = document.getElementById("lname").value,
-            age = document.getElementById("age").value;
-            asso = document.getElementById("asso").value;
-            date = document.getElementById("date").value;
-
-            if(fname === ""){
-                alert("First Name Connot Be Empty");
-                isEmpty = true;
+            window.onload = function () {
+                addr = document.getElementById("flop");
             }
-            else if(lname === ""){
-                alert("Last Name Connot Be Empty");
-                isEmpty = true;
-            }
-            else if(age === ""){
-                alert("Age Connot Be Empty");
-                isEmpty = true;
-            }
-            else if(asso === ""){
-                alert("Age Connot Be Empty");
-                isEmpty = true;
-            }
-            else if(date === ""){
-                alert("Age Connot Be Empty");
-                isEmpty = true;
-            }
-            return isEmpty;
-        }
 
-        // Quand on clique sur la ligne correspondante
-        function selectedRowToInput()
-        {
-            for(var i = 1; i < table.rows.length; i++)
+            var rIndex,
+            table = document.getElementById("table");
+
+            // Vérifie si un input est vide
+            function checkEmptyInput()
             {
-                table.rows[i].onclick = function()
-                {
-                    // récupère la ligne selectionnée
-                    rIndex = this.rowIndex;
-                    document.getElementById("fname").value = this.cells[0].innerHTML;
-                    document.getElementById("lname").value = this.cells[1].innerHTML;
-                    document.getElementById("age").value = this.cells[2].innerHTML;
-                    document.getElementById("asso").value = this.cells[3].innerHTML;
-                    document.getElementById("date").value = this.cells[4].innerHTML;
+                var isEmpty = false,
+                fname = document.getElementById("fname").value,
+                lname = document.getElementById("lname").value,
+                age = document.getElementById("age").value;
+                asso = document.getElementById("asso").value;
+                date = document.getElementById("date").value;
 
-                    //ouvre le menu modal
-                    $('#exampleModalCenter').modal('show');
-                };
+                if(fname === ""){
+                    alert("First Name Connot Be Empty");
+                    isEmpty = true;
+                }
+                else if(lname === ""){
+                    alert("Last Name Connot Be Empty");
+                    isEmpty = true;
+                }
+                else if(age === ""){
+                    alert("Age Connot Be Empty");
+                    isEmpty = true;
+                }
+                else if(asso === ""){
+                    alert("Age Connot Be Empty");
+                    isEmpty = true;
+                }
+                else if(date === ""){
+                    alert("Age Connot Be Empty");
+                    isEmpty = true;
+                }
+                return isEmpty;
             }
-        }
-        selectedRowToInput();
 
+            // Quand on clique sur la ligne correspondante
+            function selectedRowToInput()
+            {
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                        // récupère la ligne selectionnée
+                        rIndex = this.rowIndex;
+                        document.getElementById("fname").value = this.cells[0].innerHTML;
+                        document.getElementById("lname").value = this.cells[1].innerHTML;
+                        document.getElementById("age").value = this.cells[2].innerHTML;
+                        document.getElementById("asso").value = this.cells[3].innerHTML;
+                        document.getElementById("date").value = this.cells[4].innerHTML;
+
+                        //ouvre le menu modal
+                        $('#exampleModalCenter').modal('show');
+                    };
+                }
+            }
+            selectedRowToInput();
         </script>
     </body>
 </html>

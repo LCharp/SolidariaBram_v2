@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Solidaria Bram</title>
 		<?php
-		include("include/bootstrap.inc")
+			include("include/bootstrap.inc")
 		?>
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 		<link rel="stylesheet" href="css/navbar.css">
@@ -29,7 +29,7 @@
 			$idc = connect();
 
 			if (empty($_POST['parcours']))
-			{$selectid = null;}
+				{$selectid = null;}
 			else {
 				$selectid = $_POST['parcours'];
 			}
@@ -143,17 +143,17 @@
 					<div class="col-md-4">
 						<select id="zl_parcours" name="zl_parcours" class="form-control">
 							<?php
-									$sql="SELECT id_p, lieu , longueur_p, date_p, heure_p FROM parcours WHERE SUBSTR(date_p,1,4) = '2019' ORDER BY id_p";
-									$rs=pg_exec($idc,$sql);
-									$num = 0;
-									while($ligne=pg_fetch_assoc($rs)){
-										$num = $num + 1;
-											if($ligne['id_p'] != $selectid){
-													print('<option value="'.$ligne['id_p'].'">  '.$ligne['lieu'].' -  Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
-											}else{
-													print('<option value="'.$ligne['id_p'].'" selected>  '.$ligne['lieu'].' - Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
-											};
-									}
+								$sql="SELECT id_p, lieu , longueur_p, date_p, heure_p FROM parcours WHERE SUBSTR(date_p,1,4) = '2019' ORDER BY id_p";
+								$rs=pg_exec($idc,$sql);
+								$num = 0;
+								while($ligne=pg_fetch_assoc($rs)){
+									$num = $num + 1;
+									if($ligne['id_p'] != $selectid){
+										print('<option value="'.$ligne['id_p'].'">  '.$ligne['lieu'].' -  Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
+									}else{
+										print('<option value="'.$ligne['id_p'].'" selected>  '.$ligne['lieu'].' - Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
+									};
+								}
 							?>
 						</select>
 					</div>
