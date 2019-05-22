@@ -26,7 +26,7 @@ session_start();
             $idc = connect();
         ?>
 
-        <h3 style="align-items: center;">Les parcours de l'edition 2019</h5>
+        <h3>Les parcours de l'edition 2019</h3>
         <div class="row">
             <?php
                 $sql="SELECT p.id_p, longueur_p, date_p, heure_p, cp.id_parcours_carte, forme_p FROM parcours p INNER JOIN c_parcours cp ON p.id_p = cp.id_p WHERE date_p LIKE '2019%' ORDER BY id_p";
@@ -81,13 +81,13 @@ session_start();
                 }).addTo(laCarte);
 
                 L.geoJson(JSON.parse(geojson), {
-                onEachFeature: function (feature, layer) {
-                if (layer instanceof L.Polyline) {
-                layer.setStyle({
-                'color': "#08B995"
-                });
-                }
-                }
+                    onEachFeature: function (feature, layer) {
+                        if (layer instanceof L.Polyline) {
+                            layer.setStyle({
+                                'color': "#08B995"
+                            });
+                        }
+                    }
                 }).addTo(laCarte);
 
                 return (laCarte);

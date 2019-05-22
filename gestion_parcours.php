@@ -10,19 +10,11 @@
         <?php
             include("include/bootstrap.inc")
         ?>
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
         <link rel="stylesheet" href="css/navbar.css"/>
         <link rel="stylesheet" href="css/css_tableau.css"/>
-        <style>
-            .container{overflow: hidden}
-            .tab{float: left;}
-            .tab-2{margin-left: 50px}
-            .tab-2 input{display: block;margin-bottom: 10px}
-            tr{transition:all .25s ease-in-out}
-            tr:hover{background-color:#EEE;cursor: pointer}
-            #editDiv {	visibility : visible; border-width:1px;	}
-            #flop {	visibility : hidden;	}
-        </style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="css/css_gestion_parcours.css">
     </head>
 
     <body>
@@ -77,14 +69,14 @@
                                     <td class="type">'.$ligne['type_p'].'</td>
                                     <td class="niv">'.$ligne['niveau'].'</td>
                                     <td class="tarif">'.$ligne['tarif'].'</td>
-                                    <td class="drawed">'.$draw.'</td>
+                                    <td class="drawed"><input type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalTrace" id="inputTrace" value ='.$draw.'></input></td>
+                                    <td class="drawed"><input type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#ModalDelete" id="inputDelete" value="❌"></input></td>
                                 </tr>'
                                 );
                             }
                         ?>
                     </table>
                     <p style="font-style: italic;color:#33cabb;"> * cliquer sur une ligne du tableau pour modifier les informations</p>
-                    <!-- <button onclick="location.href = 'form_insert_course.php';" type="button" class="btn btn-success">Ajouter une course</button> -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalInsert">
                         Ajouter un parcours
                     </button>
@@ -150,11 +142,13 @@
                                     </div>
                                     <div class="col-md">
                                         <label for="textTracé">Tracé</label>
-                                        <input type="button" class="form-control" id="inputTracé" name='inputTracé' value ='<?php echo $draw; ?>'></input>
+                                        <br/>
+                                        <input type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalTrace" id="inputTracé" name='inputTracé' value ='Changer de Parcours'></input>
                                     </div>
+                                    <hr>
                                     <div class="row">
                                         <div>
-                                            <input type="submit" class="btn btn-primary" style="margin-top: 5px;"></button>
+                                            <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
                                         </div>
                                     </div>
                                 </form>
@@ -164,6 +158,78 @@
                 </div>
             </div>
 
+            <!-- Modal Choix Trace -->
+            <div class="modal fade" id="ModalTrace" tabindex="-1" role="dialog" aria-labelledby="ModalTrace" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un parcours</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="accordion">
+                                <a href="draw_parcours.php"><button type="button" class="btn btn-link">Dessiner un parcours</button></a>
+                                <hr>
+                                <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Choisir le tracé d'un parcours existant
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <form name="frm" action="requetes/update_bdd_trace_parcours.php" method="POST">
+                                        <select class="form-control" name='selectTrace' id="selectTrace">
+                                            <?php
+                                            $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte
+                                            FROM parcours
+                                            ORDER BY id_p';
+                                            $rs=pg_exec($idc,$sql);
+                                            while($ligne=pg_fetch_assoc($rs)){
+                                                print('<option value="'.$ligne['id_parcours_carte'].'"> Parcours n°'.$ligne['id_p'].' - '.$ligne['lieu'].' - Longueur:  '.$ligne['longueur_p'].'km - Utilisé le: '.$ligne['date_p'].'</option>');
+                                          }
+                                        ?>
+                                      </select>
+                                      <div class="row">
+                                          <div>
+                                              <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
+                                          </div>
+                                      </div>
+                                  </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Choix delete parcours -->
+            <div class="modal fade centered-modal" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDelete" aria-hidden="true">
+            	<div class="modal-dialog modal-confirm">
+            		<div class="modal-content">
+            			<div class="modal-header">
+            				<div class="icon-box">
+            					<i class="material-icons">&#xE5CD;</i>
+            				</div>
+            				<h4 class="modal-title">Attention !</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            			</div>
+            			<div class="modal-body">
+            				<p>Vous êtes sur le point de supprimer le parcours !</p>
+            			</div>
+            			<div class="modal-footer">
+            				<button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+            				<button type="button" class="btn btn-danger">Supprimer</button>
+            			</div>
+            		</div>
+            	</div>
+            </div>
 
             <!-- Modal Insert -->
             <div class="modal fade" id="ModalInsert" tabindex="-1" role="dialog" aria-labelledby="ModalInsert" aria-hidden="true">
@@ -227,6 +293,7 @@
                                       <label for="inputTarif">Tarif</label>
                                       <input type="number" class="form-control" id="inputTarif" name='inputTarif'></input>
                                   </div>
+                                  <hr>
                                   <div class="row">
                                       <div>
                                           <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
@@ -306,6 +373,7 @@
                     document.getElementById("inputNiv").value = this.cells[7].innerHTML;
                     document.getElementById("inputTarif").value = this.cells[8].innerHTML;
 
+                    idParcoursSelect = document.getElementById("inputId").value
                     //ouvre le menu modal
                     $('#exampleModalCenter').modal('show');
                 };
