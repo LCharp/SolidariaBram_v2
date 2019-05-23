@@ -1,7 +1,7 @@
 <?php
 
     $geojson = $_GET['insertBD'];
-    $idparcours = 11;
+    $idparcours = $_POST['changerId'];
 
 
 	include('../include/connect.php');
@@ -19,7 +19,7 @@
 	$rs=pg_exec($idc,$sql);
 
 ?>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	//alert("Parcours enregistré")
 	document.location.href='../gestion_parcours.php'
-</script> -->
+</script>
