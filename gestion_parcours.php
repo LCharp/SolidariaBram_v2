@@ -52,10 +52,8 @@
                                 // vérification si un parcours à été tracé
                                 if (isset($ligne['id_parcours_carte'])) {
                                     $draw = ' ✔️ ';
-                                    $drawbutton ='<input type="button" value="Modifier" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location:draw_parcours")"></button>';
                                 }else {
                                     $draw = '❌';
-                                    $drawbutton ='<input type="button" value="Dessiner" id="draw" class="btn btn-indigo btn-sm m-0" onClick="header("Location:draw_parcours")"></button>';
                                 };
 
                                 //affichage du tableau qui liste les parcours
@@ -159,17 +157,18 @@
             </div>
 
             <!-- Modal Choix Trace -->
-            <div class="modal fade" id="ModalTrace" tabindex="-1" role="dialog" aria-labelledby="ModalTrace" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal fade centered-modal" id="ModalTrace" tabindex="-1" role="dialog" aria-labelledby="ModalTrace" aria-hidden="true">
+                  <div class="modal-dialog modal-confirm">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un parcours</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Changer de parcours</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <div id="accordion">
+
                                 <a href="draw_parcours.php"><button type="button" class="btn btn-link">Dessiner un parcours</button></a>
                                 <hr>
                                 <div class="card">
@@ -183,6 +182,7 @@
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="card-body">
                                         <form name="frm" action="requetes/update_bdd_trace_parcours.php" method="POST">
+                                          <input type="text" id="changerId" name='changerId' style="display:none;">
                                         <select class="form-control" name='selectTrace' id="selectTrace">
                                             <?php
                                             $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte
@@ -196,7 +196,7 @@
                                       </select>
                                       <div class="row">
                                           <div>
-                                              <input type="submit" class="btn btn-success" style="margin-top: 5px;"></button>
+                                              <input type="submit" class="btn btn-primary" style="margin-top: 5px;"></button>
                                           </div>
                                       </div>
                                   </form>
@@ -209,8 +209,33 @@
                 </div>
             </div>
 
+<div class="modal fade centered-modal" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDelete" aria-hidden="true">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title">Attention !</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Vous êtes sur le point de supprimer le parcours !</p>
+                <form name="frm" action="requetes/delete_parcours.php" method="POST">
+                    <input type="text" id="deleteId" name='deleteId' style="display: none;">
+                    <div class="row">
+                        <input type="submit" class="btn btn-danger" style="margin-top: 5px;" value="Supprimer"></button>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-info" data-dismiss="modal" style="margin-top: 2%;">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
             <!-- Modal Choix delete parcours -->
-            <div class="modal fade centered-modal" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDelete" aria-hidden="true">
+            <!-- <div class="modal fade centered-modal" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDelete" aria-hidden="true">
             	<div class="modal-dialog modal-confirm">
             		<div class="modal-content">
             			<div class="modal-header">
@@ -221,15 +246,22 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             			</div>
             			<div class="modal-body">
+                    <input type="text" id="deleteId" name='deleteId' style="display: none;">
             				<p>Vous êtes sur le point de supprimer le parcours !</p>
-            			</div>
-            			<div class="modal-footer">
             				<button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
-            				<button type="button" class="btn btn-danger">Supprimer</button>
+                    <form name="frm" action="requetes/update_bdd_trace_parcours.php" method="POST">
+                      <input type="text" id="deleteId" name='deleteId'>
+                  <div class="row">
+                      <div>
+                          <input type="submit" class="btn btn-danger" style="margin-top: 5px;"></button>
+                      </div>
+                  </div>
+              </form>
             			</div>
             		</div>
             	</div>
-            </div>
+            </div> -->
+
 
             <!-- Modal Insert -->
             <div class="modal fade" id="ModalInsert" tabindex="-1" role="dialog" aria-labelledby="ModalInsert" aria-hidden="true">
@@ -364,6 +396,8 @@
                     // récupère la ligne selectionnée
                     rIndex = this.rowIndex;
                     document.getElementById("inputId").value = this.cells[0].innerHTML;
+                    document.getElementById("changerId").value = this.cells[0].innerHTML;
+                    document.getElementById("deleteId").value = this.cells[0].innerHTML;
                     document.getElementById("inputName").value = this.cells[1].innerHTML;
                     document.getElementById("inputDate").value = this.cells[2].innerHTML;
                     document.getElementById("inputHeure").value = this.cells[3].innerHTML;
@@ -372,14 +406,14 @@
                     document.getElementById("inputType").value = this.cells[6].innerHTML;
                     document.getElementById("inputNiv").value = this.cells[7].innerHTML;
                     document.getElementById("inputTarif").value = this.cells[8].innerHTML;
-
-                    idParcoursSelect = document.getElementById("inputId").value
                     //ouvre le menu modal
                     $('#exampleModalCenter').modal('show');
                 };
             }
         }
         selectedRowToInput();
+
+
 
         </script>
     </body>

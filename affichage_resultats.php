@@ -24,9 +24,7 @@
             $idc = connect();
 
             $selectid = "";
-            $sql='SELECT id_p
-            FROM parcours
-            ORDER BY id_p desc';
+            $sql='SELECT id_p FROM parcours ORDER BY id_p desc';
             $rs=pg_exec($idc,$sql);
             $ligne=pg_fetch_assoc($rs);
             if (isset($_POST['inputId'])) {
@@ -35,9 +33,7 @@
                 $selectid = $ligne['id_p'];
             }
 
-            $sql="SELECT id_p, lieu, date_p, longueur_p
-            FROM parcours
-            WHERE id_p = $selectid";
+            $sql="SELECT id_p, lieu, date_p, longueur_p FROM parcours WHERE id_p = $selectid";
             $rs=pg_exec($idc,$sql);
             $ligne=pg_fetch_assoc($rs);
             $lieup = $ligne['lieu'];
