@@ -21,11 +21,14 @@
     <body>
         <?php
             include('include/nav.inc');
+
+            $id_parcours = $_POST['AjouterId'];
         ?>
         <h3> Dessiner votre parcours</h5>
         <div id="map"></div>
 
         <script>
+            AjouterId = <?php echo $id_parcours ?>;
             var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib
@@ -81,7 +84,7 @@
                 var insertBD = encodeURIComponent(JSON.stringify(data));
                 var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
                 var downloadAnchorNode = document.createElement('a');
-                window.location.href = "requetes/insert_geojson_parcours.php?insertBD=" + insertBD;
+                window.location.href = "requetes/insert_geojson_parcours.php?insertBD=" + insertBD + "&AjouterId=" + AjouterId;
                 });
             }).addTo(map);
         </script>

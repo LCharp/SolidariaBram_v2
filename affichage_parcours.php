@@ -29,7 +29,7 @@ session_start();
         <h3>Les parcours de l'edition 2019</h3>
         <div class="row">
             <?php
-                $sql="SELECT p.id_p, longueur_p, date_p, heure_p, cp.id_parcours_carte, forme_p FROM parcours p INNER JOIN c_parcours cp ON p.id_p = cp.id_p WHERE date_p LIKE '2019%' ORDER BY id_p";
+                $sql="SELECT p.id_p, longueur_p, date_p, heure_p, p.id_parcours_carte, forme_p FROM parcours p INNER JOIN c_parcours cp ON p.id_p = cp.id_p WHERE date_p LIKE '2019%' ORDER BY id_p";
                 $rs=pg_exec($idc,$sql);
                 $num = 0;
                 $textNum = '';

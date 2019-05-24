@@ -164,7 +164,10 @@
                     </div>
                     <div class="modal-body">
                         <div id="accordion">
-                            <a href="draw_parcours.php"><button type="button" class="btn btn-link">Dessiner un parcours</button></a>
+                            <form  action="draw_parcours.php" method="post">
+                                <input type="text" id="AjouterId" name='AjouterId' style="display:none;">
+                                <input type="submit" class="btn btn-link" value="Dessiner un parcours"></input>
+                            </form>
                             <hr>
                             <div class="card">
                                 <div class="card-header" id="headingTwo">
@@ -183,7 +186,7 @@
                                                     $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte FROM parcours ORDER BY id_p';
                                                     $rs=pg_exec($idc,$sql);
                                                     while($ligne=pg_fetch_assoc($rs)){
-                                                        print('<option value="'.$ligne['id_parcours_carte'].'"> Parcours n°'.$ligne['id_p'].' - '.$ligne['lieu'].' - Longueur:  '.$ligne['longueur_p'].'km - Utilisé le: '.$ligne['date_p'].'</option>');
+                                                        print('<option value="'.$ligne['id_p'].'"> Parcours n°'.$ligne['id_p'].' - '.$ligne['lieu'].' - Longueur:  '.$ligne['longueur_p'].'km - Utilisé le: '.$ligne['date_p'].'</option>');
                                                     }
                                                 ?>
                                             </select>
@@ -357,6 +360,7 @@
                         document.getElementById("inputId").value = this.cells[0].innerHTML;
                         document.getElementById("changerId").value = this.cells[0].innerHTML;
                         document.getElementById("deleteId").value = this.cells[0].innerHTML;
+                        document.getElementById("AjouterId").value = this.cells[0].innerHTML;
                         document.getElementById("inputName").value = this.cells[1].innerHTML;
                         document.getElementById("inputDate").value = this.cells[2].innerHTML;
                         document.getElementById("inputHeure").value = this.cells[3].innerHTML;
