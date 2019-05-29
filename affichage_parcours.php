@@ -25,9 +25,13 @@ session_start();
             include('include/connect.php');
             $idc = connect();
         ?>
+        <div style="text-align:center;">
+            <h2 class="display-4" style="color: #303030">Les parcours de l'edition 2019 !</h2>
+            <p class="lead" style="color: #585858;">Choisissez un parcours et inscrivez vous dès aujourd'hui ! </p>
 
-        <h3>Les parcours de l'edition 2019</h3>
-        <div class="row">
+        </div>
+
+        <div>
             <?php
                 $sql="SELECT p.id_p, longueur_p, date_p, heure_p, p.id_parcours_carte, forme_p FROM parcours p INNER JOIN c_parcours cp ON p.id_p = cp.id_p WHERE date_p LIKE '2019%' ORDER BY id_p";
                 $rs=pg_exec($idc,$sql);
@@ -50,7 +54,7 @@ session_start();
                         </div>
                         <div class="panel-footer">
                         <form class="" action="page_inscription.php" method="post">
-                        <button type="submit" class="btn btn-info" name="parcours" value='.$numparcours.'>🏃 Inscription au Parcours n°'.($num + 1).'</button>
+                        <button type="submit" class="btn" name="parcours" value='.$numparcours.' style="background:#33cabb; color:#FFF;">🏃 Inscription au Parcours n°'.($num + 1).'</button>
                         </form>
                         </div>
                         </div>

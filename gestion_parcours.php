@@ -33,17 +33,17 @@
                     <table id="table" align="center" class="table table-bordered table-hover" style="width: 80%;">
                         <tr>
 
-                            <th>Identifiant du parcours</th>
-                            <th>Nom du parcours</th>
-                            <th>Date</th>
-                            <th>Heure</th>
-                            <th>Longueur</th>
-                            <th>Denivele</th>
-                            <th>Terrain</th>
-                            <th>Niveau</th>
-                            <th>Tarif</th>
-                            <th>Tracé</th>
-                            <th>Course</th>
+                            <th class="text-center">Identifiant du parcours</th>
+                            <th class="text-center">Nom du parcours</th>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Heure</th>
+                            <th class="text-center">Longueur</th>
+                            <th class="text-center">Denivele</th>
+                            <th class="text-center">Terrain</th>
+                            <th class="text-center">Niveau</th>
+                            <th class="text-center">Tarif</th>
+                            <th class="text-center">Tracé</th>
+                            <th class="text-center">Course</th>
 
                         </tr>
                         <?php
@@ -182,7 +182,7 @@
                     <div class="modal-body">
                         <div id="accordion">
                             <form  action="draw_parcours.php" method="post">
-                                <input type="text" id="AjouterId" name='AjouterId' style="display:readonly;">
+                                <input type="text" id="AjouterId" name='AjouterId' style="display:none;">
                                 <input type="submit" class="btn btn-link" value="Dessiner un parcours"></input>
                             </form>
                             <hr>
@@ -353,6 +353,7 @@
                 type = document.getElementById("inputType").value;
                 niv = document.getElementById("inputNiv").value;
                 tarif = document.getElementById("inputTarif").value;
+                course = document.getElementById("selectCourse").value;
 
                 if(fname === ""){
                     alert("First Name Connot Be Empty");

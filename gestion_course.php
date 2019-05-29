@@ -42,11 +42,11 @@ session_start();
                 <div class="col-md">
                     <table id="table" align="center" class="table table-bordered table-hover" style="width: 80%;">
                         <tr>
-                            <th>Identifiant de la course</th>
-                            <th>Nom de la course</th>
-                            <th>Infos course</th>
-                            <th>Association</th>
-                            <th>Date</th>
+                            <th class="text-center">Identifiant de la course</th>
+                            <th class="text-center">Nom de la course</th>
+                            <th class="text-center">Infos course</th>
+                            <th class="text-center">Association</th>
+                            <th class="text-center">Date</th>
                         </tr>
                         <?php
                             $sql='SELECT course.id_course, nom_course, infos_course, date_jour, id_asso
