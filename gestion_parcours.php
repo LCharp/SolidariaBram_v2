@@ -32,6 +32,7 @@
                 <div class="col-md">
                     <table id="table" align="center" class="table table-bordered table-hover" style="width: 80%;">
                         <tr>
+
                             <th>Identifiant du parcours</th>
                             <th>Nom du parcours</th>
                             <th>Date</th>
@@ -42,9 +43,11 @@
                             <th>Niveau</th>
                             <th>Tarif</th>
                             <th>Tracé</th>
+                            <th>Course</th>
+
                         </tr>
                         <?php
-                            $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte FROM parcours ORDER BY id_p';
+                            $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte, id_course FROM parcours ORDER BY id_p';
                             $rs=pg_exec($idc,$sql);
                             while($ligne=pg_fetch_assoc($rs)){
                                 // vérification si un parcours à été tracé
@@ -56,6 +59,7 @@
 
                                 //affichage du tableau qui liste les parcours
                                 print('<tr>
+
                                     <td class="idP">'.$ligne['id_p'].'</td>
                                     <td class="name">'.$ligne['lieu'].'</td>
                                     <td class="date">'.$ligne['date_p'].'</td>
@@ -66,6 +70,7 @@
                                     <td class="niv">'.$ligne['niveau'].'</td>
                                     <td class="tarif">'.$ligne['tarif'].'</td>
                                     <td class="drawed"><input type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalTrace" id="inputTrace" value ='.$draw.'></input></td>
+                                    <td class="idCourse">'.$ligne['id_course'].'</td>
                                     <td class="drawed"><input type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#ModalDelete" id="inputDelete" value="❌"></input></td>
                                     </tr>'
                                 );
@@ -98,6 +103,18 @@
                                     <input type="text" class="form-control" id="inputId" name='inputId' style="text-align:center" readonly>
                                 </div>
                                 <hr>
+                                <div class="col-md">
+                                    <label for="selectCourse">Course correspondante</label>
+                                    <select class="form-control" name='updateCourse' id="updateCourse">
+                                        <?php
+                                            $sql='SELECT id_course, nom_course FROM course ORDER BY id_course';
+                                            $rs=pg_exec($idc,$sql);
+                                            while($ligne=pg_fetch_assoc($rs)){
+                                                print('<option value="'.$ligne['id_course'].'"> Course n°'.$ligne['id_course'].' - '.$ligne['nom_course'].'</option>');
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
                                 <div class="col-md">
                                     <label for="inputName">Nom du Parcours</label>
                                     <input type="text" class="form-control" id="inputName" name='inputName' placeholder="La Solidaria Bram">
@@ -139,7 +156,7 @@
                                 <div class="col-md">
                                     <label for="textTracé">Tracé</label>
                                     <br/>
-                                    <input type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalTrace" id="inputTracé" name='inputTracé' value ='Changer de Parcours'></input>
+                                    <input type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalTrace" id="inputTrace" name='inputTrace' value ='Changer de Parcours'></input>
                                 </div>
                                 <hr>
                                 <div class="row">
@@ -165,7 +182,7 @@
                     <div class="modal-body">
                         <div id="accordion">
                             <form  action="draw_parcours.php" method="post">
-                                <input type="text" id="AjouterId" name='AjouterId' style="display:none;">
+                                <input type="text" id="AjouterId" name='AjouterId' style="display:readonly;">
                                 <input type="submit" class="btn btn-link" value="Dessiner un parcours"></input>
                             </form>
                             <hr>
@@ -289,6 +306,18 @@
                                 <div class="col-md">
                                     <label for="inputTarif">Tarif</label>
                                     <input type="number" class="form-control" id="inputTarif" name='inputTarif'></input>
+                                </div>
+                                <div class="col-md">
+                                    <label for="selectCourse">Course correspondante</label>
+                                    <select class="form-control" name='selectCourse' id="selectCourse">
+                                        <?php
+                                            $sql='SELECT id_course, nom_course FROM course ORDER BY id_course';
+                                            $rs=pg_exec($idc,$sql);
+                                            while($ligne=pg_fetch_assoc($rs)){
+                                                print('<option value="'.$ligne['id_course'].'"> Course n°'.$ligne['id_course'].' - '.$ligne['nom_course'].'</option>');
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                                 <hr>
                                 <div class="row">

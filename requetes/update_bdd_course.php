@@ -6,12 +6,6 @@
 	$idAsso = $_POST['asso'];
 	$infos = $_POST['age'];
 
-	echo $id;
-	echo $nomCourse;
-	echo $infos;
-	echo $date;
-
-
 	include('../include/connect.php');
 	$idc = connect();
 	$sql="UPDATE course set nom_course = '$nomCourse', infos_course = '$infos' where id_course = $id;";
@@ -21,5 +15,5 @@
 
 ?>
 <script type="text/javascript">
-	document.location.href='../affichage_course.php'
+	document.location.href='../gestion_course.php'
 </script>

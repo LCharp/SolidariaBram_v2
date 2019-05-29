@@ -10,9 +10,11 @@ session_start();
         <?php
             include("include/bootstrap.inc")
         ?>
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
         <link rel="stylesheet" href="css/navbar.css"/>
         <link rel="stylesheet" href="css/css_tableau.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="css/css_gestion_course.css">
         <style>
             .container{overflow: hidden}
             .tab{float: left;}
@@ -60,7 +62,7 @@ session_start();
                                 <td class="infos">'.$ligne['infos_course'].'</td>
                                 <td class="infos">'.$ligne['id_asso'].'</td>
                                 <td class="infos">'.$ligne['date_jour'].'</td>
-
+                                <td class="drawed"><input type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#ModalDelete" id="inputDelete" value="❌"></input></td>
                                 </tr>'
                                 );
                             }
@@ -166,11 +168,11 @@ session_start();
                                     <label for="inputId">Association concernée</label>
                                     <select class="form-control" id="inputIdAsso" name='inputIdAsso' >
                                         <?php
-                                        $sql='SELECT id_asso, nom_asso FROM association ORDER BY nom_asso';
-                                        $rs=pg_exec($idc,$sql);
-                                        while($ligne=pg_fetch_assoc($rs)){
-                                            print('<option value="'.$ligne['id_asso'].'">'.$ligne['nom_asso'].'</option>');
-                                        }
+                                            $sql='SELECT id_asso, nom_asso FROM association ORDER BY nom_asso';
+                                            $rs=pg_exec($idc,$sql);
+                                            while($ligne=pg_fetch_assoc($rs)){
+                                                print('<option value="'.$ligne['id_asso'].'">'.$ligne['nom_asso'].'</option>');
+                                            }
                                         ?>
                                     </select>
                                 </div>
@@ -190,6 +192,30 @@ session_start();
             </div>
         </div>
 
+        <!-- Modal suppression d'une course -->
+        <div class="modal fade centered-modal" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDelete" aria-hidden="true">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="icon-box">
+                            <i class="material-icons">&#xE5CD;</i>
+                        </div>
+                        <h4 class="modal-title">Attention !</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Vous êtes sur le point de supprimer la course !</p>
+                        <form name="frm" action="requetes/delete_course.php" method="POST">
+                            <input type="text" id="deleteId" name='deleteId' style="display: none;">
+                            <div class="row">
+                                <input type="submit" class="btn btn-danger" style="margin-top: 5px;" value="Supprimer"></button>
+                            </div>
+                        </form>
+                        <button type="button" class="btn btn-info" data-dismiss="modal" style="margin-top: 2%;">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script>
             window.onload = function () {
@@ -241,6 +267,7 @@ session_start();
                     {
                         // récupère la ligne selectionnée
                         rIndex = this.rowIndex;
+                        document.getElementById("deleteId").value = this.cells[0].innerHTML;
                         document.getElementById("fname").value = this.cells[0].innerHTML;
                         document.getElementById("lname").value = this.cells[1].innerHTML;
                         document.getElementById("age").value = this.cells[2].innerHTML;
