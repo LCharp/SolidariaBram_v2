@@ -1,13 +1,13 @@
 <?php
 
     $geojson = $_GET['insertBD'];
-    $idparcours = $_POST['changerId'];
+    $idparcours = $_GET['AjouterId'];
 
 
 	include('../include/connect.php');
 	$idc = connect();
 
-    $sql='SELECT id_parcours_carte FROM c_parcours ORDER BY id_p DESC';
+    $sql='SELECT id_parcours_carte FROM c_parcours ORDER BY id_parcours_carte DESC';
     $rs=pg_exec($idc,$sql);
     $ligne=pg_fetch_assoc($rs);
     $idtrace = $ligne['id_parcours_carte'] + 1;

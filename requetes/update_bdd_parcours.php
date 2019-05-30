@@ -9,12 +9,11 @@
 	$type = $_POST['inputType'];
 	$tarif = $_POST['inputTarif'];
 	$niv = $_POST['inputNiv'];
-
-echo $date;
+	$numCourse = $_POST['updateCourse'];
 
 include('../include/connect.php');
         $idc = connect();
-        $sql="UPDATE parcours set type_p = '$type', niveau= '$niv', lieu = '$name', longueur_p = $longueur, denivelee_p = $denivele, tarif = $tarif, date_p = '$date', heure_p = '$heure' where id_p = $id;";
+        $sql="UPDATE parcours set type_p = '$type', niveau= '$niv', lieu = '$name', longueur_p = $longueur, denivelee_p = $denivele, tarif = $tarif, date_p = '$date', heure_p = '$heure', id_course = '$numCourse' where id_p = $id;";
         $rs=pg_exec($idc,$sql);
 
 ?>

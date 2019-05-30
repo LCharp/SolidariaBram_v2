@@ -32,19 +32,22 @@
                 <div class="col-md">
                     <table id="table" align="center" class="table table-bordered table-hover" style="width: 80%;">
                         <tr>
-                            <th>Identifiant du parcours</th>
-                            <th>Nom du parcours</th>
-                            <th>Date</th>
-                            <th>Heure</th>
-                            <th>Longueur</th>
-                            <th>Denivele</th>
-                            <th>Terrain</th>
-                            <th>Niveau</th>
-                            <th>Tarif</th>
-                            <th>Tracé</th>
+
+                            <th class="text-center">Identifiant du parcours</th>
+                            <th class="text-center">Nom du parcours</th>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Heure</th>
+                            <th class="text-center">Longueur</th>
+                            <th class="text-center">Denivele</th>
+                            <th class="text-center">Terrain</th>
+                            <th class="text-center">Niveau</th>
+                            <th class="text-center">Tarif</th>
+                            <th class="text-center">Tracé</th>
+                            <th class="text-center">Course</th>
+
                         </tr>
                         <?php
-                            $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte FROM parcours ORDER BY id_p';
+                            $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte, id_course FROM parcours ORDER BY id_p';
                             $rs=pg_exec($idc,$sql);
                             while($ligne=pg_fetch_assoc($rs)){
                                 // vérification si un parcours à été tracé
@@ -56,6 +59,7 @@
 
                                 //affichage du tableau qui liste les parcours
                                 print('<tr>
+
                                     <td class="idP">'.$ligne['id_p'].'</td>
                                     <td class="name">'.$ligne['lieu'].'</td>
                                     <td class="date">'.$ligne['date_p'].'</td>
@@ -66,6 +70,7 @@
                                     <td class="niv">'.$ligne['niveau'].'</td>
                                     <td class="tarif">'.$ligne['tarif'].'</td>
                                     <td class="drawed"><input type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalTrace" id="inputTrace" value ='.$draw.'></input></td>
+                                    <td class="idCourse">'.$ligne['id_course'].'</td>
                                     <td class="drawed"><input type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#ModalDelete" id="inputDelete" value="❌"></input></td>
                                     </tr>'
                                 );
@@ -98,6 +103,18 @@
                                     <input type="text" class="form-control" id="inputId" name='inputId' style="text-align:center" readonly>
                                 </div>
                                 <hr>
+                                <div class="col-md">
+                                    <label for="selectCourse">Course correspondante</label>
+                                    <select class="form-control" name='updateCourse' id="updateCourse">
+                                        <?php
+                                            $sql='SELECT id_course, nom_course FROM course ORDER BY id_course';
+                                            $rs=pg_exec($idc,$sql);
+                                            while($ligne=pg_fetch_assoc($rs)){
+                                                print('<option value="'.$ligne['id_course'].'"> Course n°'.$ligne['id_course'].' - '.$ligne['nom_course'].'</option>');
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
                                 <div class="col-md">
                                     <label for="inputName">Nom du Parcours</label>
                                     <input type="text" class="form-control" id="inputName" name='inputName' placeholder="La Solidaria Bram">
@@ -139,7 +156,7 @@
                                 <div class="col-md">
                                     <label for="textTracé">Tracé</label>
                                     <br/>
-                                    <input type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalTrace" id="inputTracé" name='inputTracé' value ='Changer de Parcours'></input>
+                                    <input type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalTrace" id="inputTrace" name='inputTrace' value ='Changer de Parcours'></input>
                                 </div>
                                 <hr>
                                 <div class="row">
@@ -164,7 +181,10 @@
                     </div>
                     <div class="modal-body">
                         <div id="accordion">
-                            <a href="draw_parcours.php"><button type="button" class="btn btn-link">Dessiner un parcours</button></a>
+                            <form  action="draw_parcours.php" method="post">
+                                <input type="text" id="AjouterId" name='AjouterId' style="display:none;">
+                                <input type="submit" class="btn btn-link" value="Dessiner un parcours"></input>
+                            </form>
                             <hr>
                             <div class="card">
                                 <div class="card-header" id="headingTwo">
@@ -183,7 +203,7 @@
                                                     $sql='SELECT id_p, lieu, heure_p, longueur_p, denivelee_p, type_p, niveau, tarif, date_p, id_parcours_carte FROM parcours ORDER BY id_p';
                                                     $rs=pg_exec($idc,$sql);
                                                     while($ligne=pg_fetch_assoc($rs)){
-                                                        print('<option value="'.$ligne['id_parcours_carte'].'"> Parcours n°'.$ligne['id_p'].' - '.$ligne['lieu'].' - Longueur:  '.$ligne['longueur_p'].'km - Utilisé le: '.$ligne['date_p'].'</option>');
+                                                        print('<option value="'.$ligne['id_p'].'"> Parcours n°'.$ligne['id_p'].' - '.$ligne['lieu'].' - Longueur:  '.$ligne['longueur_p'].'km - Utilisé le: '.$ligne['date_p'].'</option>');
                                                     }
                                                 ?>
                                             </select>
@@ -287,6 +307,18 @@
                                     <label for="inputTarif">Tarif</label>
                                     <input type="number" class="form-control" id="inputTarif" name='inputTarif'></input>
                                 </div>
+                                <div class="col-md">
+                                    <label for="selectCourse">Course correspondante</label>
+                                    <select class="form-control" name='selectCourse' id="selectCourse">
+                                        <?php
+                                            $sql='SELECT id_course, nom_course FROM course ORDER BY id_course';
+                                            $rs=pg_exec($idc,$sql);
+                                            while($ligne=pg_fetch_assoc($rs)){
+                                                print('<option value="'.$ligne['id_course'].'"> Course n°'.$ligne['id_course'].' - '.$ligne['nom_course'].'</option>');
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
                                 <hr>
                                 <div class="row">
                                     <div>
@@ -321,6 +353,7 @@
                 type = document.getElementById("inputType").value;
                 niv = document.getElementById("inputNiv").value;
                 tarif = document.getElementById("inputTarif").value;
+                course = document.getElementById("selectCourse").value;
 
                 if(fname === ""){
                     alert("First Name Connot Be Empty");
@@ -357,6 +390,7 @@
                         document.getElementById("inputId").value = this.cells[0].innerHTML;
                         document.getElementById("changerId").value = this.cells[0].innerHTML;
                         document.getElementById("deleteId").value = this.cells[0].innerHTML;
+                        document.getElementById("AjouterId").value = this.cells[0].innerHTML;
                         document.getElementById("inputName").value = this.cells[1].innerHTML;
                         document.getElementById("inputDate").value = this.cells[2].innerHTML;
                         document.getElementById("inputHeure").value = this.cells[3].innerHTML;

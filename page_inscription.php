@@ -38,8 +38,8 @@
 		<form class="form-horizontal" action="requetes/insert_bdd_individu.php" method="post">
 			<fieldset>
 
-				<legend style="text-align:center;">Inscription</legend>
-
+				<h2 class="display-4" style="color: #303030;text-align:center;">Inscription</h2>
+				<hr>
 				<div class="form-group">
 					<label class="col-md-4 control-label">Civilite</label>
 					<div class="col-md-4">
@@ -143,15 +143,15 @@
 					<div class="col-md-4">
 						<select id="zl_parcours" name="zl_parcours" class="form-control">
 							<?php
-								$sql="SELECT id_p, lieu , longueur_p, date_p, heure_p FROM parcours WHERE SUBSTR(date_p,1,4) = '2019' ORDER BY id_p";
+								$sql="SELECT id_p, lieu , longueur_p, date_p, heure_p, nom_course FROM parcours p INNER JOIN course c ON p.id_course = c.id_course WHERE SUBSTR(date_p,1,4) = '2019' ORDER BY id_p";
 								$rs=pg_exec($idc,$sql);
 								$num = 0;
 								while($ligne=pg_fetch_assoc($rs)){
 									$num = $num + 1;
 									if($ligne['id_p'] != $selectid){
-										print('<option value="'.$ligne['id_p'].'">  '.$ligne['lieu'].' -  Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
+										print('<option value="'.$ligne['id_p'].'">  '.$ligne['nom_course'].' -  Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
 									}else{
-										print('<option value="'.$ligne['id_p'].'" selected>  '.$ligne['lieu'].' - Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
+										print('<option value="'.$ligne['id_p'].'" selected>  '.$ligne['nom_course'].' - Parcours n°'.$num.' - Distance : '.$ligne['longueur_p'].'km - Heure du départ: '.$ligne['heure_p'].'</option>');
 									};
 								}
 							?>

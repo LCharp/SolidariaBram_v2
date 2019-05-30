@@ -9,7 +9,6 @@
 			include("include/bootstrap.inc")
 		?>
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="css/navbar.css">
 		<style>
 			hr{
@@ -64,17 +63,20 @@
 							<a class="carousel-control-prev" href="#carousel-147768" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-147768" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
 						</div>
 						<div style="margin-left: 12%; margin-top: 4%; margin-right:10%">
-							<h2>
+							<h1 class="display-4" style="color: #303030">
 								<?php echo $nomassoc;?>
-							</h2>
+							</h1>
 							<div>
-								<p> Cette année, c'est l'association <b><?php echo $nomassoc;?> </b> présidé par <b><?php echo $dirassoc ?></b> qui est la bénéficiaire de notre course</p>
-								<p> Voici quelques mots laissés par l'association :</p>
-								<p><cite>
+								<p style="color: #585858; font-size:140%;"> Cette année, c'est l'association <b><?php echo $nomassoc;?> </b> présidé par <b><?php echo $dirassoc ?></b> qui est la bénéficiaire de notre course.</br>
+								Voici quelques mots laissés par l'association :</p>
+								<blockquote class="blockquote">
+									<p class="mb-0">
 								<?php
 									echo $descrassoc;
 								?>
-								</cite></p>
+								</p>
+								<footer class="blockquote-footer"> <?php echo $dirassoc ?>, <cite> Assemblée Générale de <?php echo $nomassoc;?> </cite></footer>
+							</blockquote>
 							</div>
 						</div>
 					</div>
@@ -85,7 +87,7 @@
 				<div class="col-md-3">
 					<div class="card" style="width: 75%; margin-top: 6%;">
 					<div class="card-header">
-						Coordonnées
+						<h3>Coordonnées</h3>
 					</div>
 					<ul class="list-group list-group-flush"  style="text-align: center; margin-top: 2%;">
 						<li class="list-group-item"><b><?php echo $nomassoc; ?></b></li>

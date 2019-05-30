@@ -16,5 +16,5 @@
 
 ?>
 <script type="text/javascript">
-	document.location.href='../affichage_course.php'
+	document.location.href='../gestion_course.php'
 </script>
