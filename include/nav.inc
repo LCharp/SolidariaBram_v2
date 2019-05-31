@@ -27,7 +27,7 @@ if (isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION['or
     				</ul>
     			</li>
                 <li class="nav-item"><a href="affichage_resultats.php" class="nav-link">Les résultats</a></li>
-    			<li class="nav-item"><a href="#" class="nav-link">Informations utiles</a></li>
+    			<li class="nav-item"><a href="page_information.php" class="nav-link">Informations utiles</a></li>
                 <li class="nav-item dropdown">
     				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Gestion des Parcours <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -79,7 +79,7 @@ else if(isset($_SESSION['email']) AND isset($_SESSION['password']) AND $_SESSION
     				</ul>
     			</li>
                 <li class="nav-item"><a href="affichage_resultats.php" class="nav-link">Les résultats</a></li>
-    			<li class="nav-item"><a href="#" class="nav-link">Informations utiles</a></li>
+    			<li class="nav-item"><a href="page_information.php" class="nav-link">Informations utiles</a></li>
     		</ul>
     		<ul class="nav navbar-nav navbar-right ml-auto">
                 <li class="nav-item">
@@ -113,7 +113,7 @@ else
                 <li class="nav-item"><a href="affichage_parcours.php" class="nav-link">Les parcours</a></li>
                 <li class="nav-item"><a href="tracking.php" class="nav-link">Tracking</a></li>
                 <li class="nav-item"><a href="affichage_resultats.php" class="nav-link">Les résultats</a></li>
-    			<li class="nav-item"><a href="#" class="nav-link">Informations utiles</a></li>
+    			<li class="nav-item"><a href="page_information.php" class="nav-link">Informations utiles</a></li>
     		</ul>
     		<ul class="nav navbar-nav navbar-right ml-auto">
     			<li class="nav-item">
