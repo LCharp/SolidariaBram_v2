@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <form name="frm_choixass" method="post" action="actions/update_association.php">
+                    <form name="frm_choixass" method="post" action="requetes/update_association.php">
                         Choix : <select id="assos" name="assos" onchange="showAssos(this.value)" class="form-control">
                             <?php
                                 // Rqt affiche l'assoc checked = true
@@ -155,7 +155,7 @@
                             document.getElementById("txtHint").innerHTML = this.responseText;
                         }
                     };
-                    xmlhttp.open("GET","./actions/getassociation.php?q="+str,true);
+                    xmlhttp.open("GET","./requetes/getassociation.php?q="+str,true);
                     xmlhttp.send();
                 }
             }

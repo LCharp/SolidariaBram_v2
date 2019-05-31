@@ -206,30 +206,6 @@
 					// Pour appliquer le controle à la carte
 					L.control.layers(plans, couches).addTo(carte);
 
-					//Essai de la fonction de géolocalisation
-					/*function onAccuratePositionProgress (e) {
-					    console.log(e.accuracy);
-					    console.log(e.latlng);
-					}
-
-					function onAccuratePositionFound (e) {
-					    console.log(e.accuracy);
-					    console.log(e.latlng);
-					}
-
-					function onAccuratePositionError (e) {
-					    console.log(e.message)
-					}
-
-					carte.on('accuratepositionprogress', onAccuratePositionProgress);
-					carte.on('accuratepositionfound', onAccuratePositionFound);
-					carte.on('accuratepositionerror', onAccuratePositionError);
-
-					carte.findAccuratePosition({
-					    maxWait: 15000, // defaults to 10000
-					    desiredAccuracy: 30 // defaults to 20
-					});*/
-
 					//routing machine
 					//1-waypoints
 					var startpoint=L.latLng(43.240193,2.112281);//sur le pt de regroupement par défaut position 0 dans l'index
