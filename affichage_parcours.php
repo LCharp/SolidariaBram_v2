@@ -10,7 +10,7 @@ session_start();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php
-            include("include/bootstrap.inc");
+            include("include/bootstrap_parcours.inc");
             include("include/fontawesome.inc");
             include("include/scripts_draw.php");
             include("include/easybutton.inc");
@@ -28,7 +28,6 @@ session_start();
         <div style="text-align:center;">
             <h2 class="display-4" style="color: #303030">Les parcours de l'edition 2019 !</h2>
             <p class="lead" style="color: #585858;">Choisissez un parcours et inscrivez vous dès aujourd'hui ! </p>
-
         </div>
 
         <div>

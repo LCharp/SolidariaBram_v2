@@ -27,6 +27,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="css/navbar.css">
+		<link rel="stylesheet" href="css/centerdiv.css">
 		<link rel="stylesheet" href="libs/leaflet_routing_machine/dist/leaflet-routing-machine.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 

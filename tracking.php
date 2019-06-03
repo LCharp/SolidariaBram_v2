@@ -47,6 +47,7 @@ $idc = connect();
             WHERE online = 'connecte' or online = 'pause'";
             $resultat = pg_exec($idc, $sql);
         ?>
+		<br/>
         <select id="online" name="online" onchange="showOnline(this.value); recupDonnees();" class="form-control">
 			<option value = "0" >Veuillez selectionnez un participant actuellement en ligne</option>
             <?php
@@ -58,7 +59,7 @@ $idc = connect();
         <br>
 		<div id="etat" class = "centre"></div>
 		<div id ="carte" class ="carte"></div>
-
+		<br/>
 		<div class="row stats-gen-libelle">
 		   <div class="col-md-4 center-text">Durée <i class="far fa-clock"></i></div>
 		   <div class="col-md-4 center-text">Distance <i class="fas fa-ruler-horizontal"></i></div>
@@ -186,7 +187,7 @@ $idc = connect();
 			// Vue
 			var view = new ol.View({
 				center: [2.113409, 43.243515],
-				zoom: 19,
+				zoom: 16,
 				maxZoom: 23,
 				projection: 'EPSG:4326',
 			});

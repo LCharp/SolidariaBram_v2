@@ -41,7 +41,7 @@
             $datep = $ligne['date_p'];
         ?>
 
-        <h3 class="display-4" style="color: #303030;text-align:center;">Selectionner une course</h3>
+        <h3 class="display-5" style="color: #303030;text-align:center;">Selectionner une course</h3>
 
         <div class="row">
             <div class="col-md-4"></div>
@@ -72,11 +72,11 @@
 
         <hr>
 
-        <h3 class="display-4" style="color: #303030;text-align:center;">Résultat de la course:</h3>
+        <h3 class="display-5" style="color: #303030;text-align:center;">Résultat de la course:</h3>
 
         <br/>
         <?php
-            echo ("<h4><b>Parcours n°".$selectid."</b> : ". $lieup." - ".$distancep."km - ".$datep."</h4>");
+            echo ("<h5><b>Parcours n°".$selectid."</b> : ". $lieup." - ".$distancep."km - ".$datep."</h5>");
         ?>
         <div id="users">
             <input class="search" placeholder="Rechercher par nom ou dossard" />
