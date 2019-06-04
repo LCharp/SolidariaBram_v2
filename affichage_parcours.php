@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-session_start();
+	session_start();
+	include 'include/header.inc';
 ?>
 
 <html lang="fr" dir="ltr">
@@ -21,7 +22,6 @@ session_start();
 
     <body>
         <?php
-            include('include/nav.inc');
             include('include/connect.php');
             $idc = connect();
         ?>

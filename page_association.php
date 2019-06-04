@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+	session_start();
+	include 'include/header.inc';
+?>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -27,8 +31,6 @@
 
 	<body>
 		<?php
-			session_start();
-			include('include/nav.inc');
 			$nomassoc = "";
 			$adrassoc = "";
 			$cpassoc = "";

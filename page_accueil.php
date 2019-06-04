@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	include 'include/header.inc';
 ?>
 <html lang="en">
 	<head>

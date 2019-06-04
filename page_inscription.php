@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	include 'include/header.inc';
 ?>
 <html lang="en">
 	<head>
@@ -24,7 +25,6 @@
 
 		<!-- Appel Navbar -->
 		<?php
-			include('include/nav.inc');
 			include('include/connect.php');
 			$idc = connect();
 

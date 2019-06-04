@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
-    session_start();
+	session_start();
+	include 'include/header.inc';
 ?>
 <html lang="fr" dir="ltr">
     <head>
@@ -20,8 +21,6 @@
 
     <body>
         <?php
-            include('include/nav.inc');
-
             $id_parcours = $_POST['AjouterId'];
         ?>
         <h3> Dessiner votre parcours</h5>

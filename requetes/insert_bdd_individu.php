@@ -13,7 +13,7 @@
  $type_doc=$_POST['doc'];
  $file=$_POST['zs_doc'];
  $parcours=$_POST['zl_parcours'];
-
+ $password = password_hash($pass, PASSWORD_DEFAULT);
 
 if ($type_doc == "licence"){
   $licence = "true";
@@ -39,7 +39,7 @@ else {
  $idinscrit = $ligne['id_inscrit'] + 1;
 
 
-$sql="insert into individu (id_individu, nom_p, prenom_p, adresse_p, ville_p, cp_p, civilite_p, date_naissance_p, mail_p, tel_p, mdp_p) values ($idindividu, '$nom', '$prenom', '$adresse', '$ville', '$cp', '$civ', '$datnais', '$mail', '$tel', '$pass')";
+$sql="insert into individu (id_individu, nom_p, prenom_p, adresse_p, ville_p, cp_p, civilite_p, date_naissance_p, mail_p, tel_p, mdp_p) values ($idindividu, '$nom', '$prenom', '$adresse', '$ville', '$cp', '$civ', '$datnais', '$mail', '$tel', '$password')";
 $rs=pg_exec($idc, $sql);
 
 
@@ -50,5 +50,5 @@ $rs=pg_exec($idc, $sql);
 ?>
 
 <script type="text/javascript">
-	document.location.href='../accueil.php'
+	document.location.href='../page_accueil.php'
 </script>
